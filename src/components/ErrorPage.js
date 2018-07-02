@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text } from '@hackclub/design-system'
+import React from "react";
+import { Text } from "@hackclub/design-system";
 
 const ErrorPage = props => (
   <Text color="error" py={3} align="center" {...props}>
@@ -11,8 +11,8 @@ const ErrorPage = props => (
       🚨
     </span>
     <br />
-    Please let us know about this by emailing us at{' '}
+    Please let us know about this by emailing us at{" "}
     <a href="mailto:zane@hackchicago.io">zane@hackchicago.io</a>
   </Text>
-)
-export default ErrorPage
+);
+export default ErrorPage;
