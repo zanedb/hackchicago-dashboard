@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./App.css";
-import { ThemeProvider, Heading } from "@hackclub/design-system";
+import React, { Component } from 'react'
+import './App.css'
+import { ThemeProvider, Heading } from '@hackclub/design-system'
 
-import Projects from "./components/Projects";
+import Projects from './components/Projects'
 
 class App extends Component {
   render() {
@@ -13,8 +13,8 @@ class App extends Component {
             new auth way  | coming soon! */}
         <Projects authKey="" />
       </ThemeProvider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

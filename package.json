@@ -14,7 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "pretty-quick --staged",
+    "precommit": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
     "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write"
   },
   "devDependencies": {
