@@ -61,6 +61,7 @@ class Projects extends Component {
       case 'loading':
         return <LoadingBar />
       case 'success':
+        console.log(projects)
         return (
           <Fragment>
             {projects.length < 1 ? (
@@ -69,7 +70,14 @@ class Projects extends Component {
               </Text>
             ) : (
               projects.map(project => (
-                <Project name={project.name} key={project._id} />
+                <Project
+                  key={project._id}
+                  name={project.name}
+                  description={project.description}
+                  submitter={project.submitter}
+                  tagline={project.tagline}
+                  timestamp={project.timestamp}
+                />
               ))
             )}
           </Fragment>
