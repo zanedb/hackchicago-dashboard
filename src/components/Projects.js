@@ -17,7 +17,7 @@ class Projects extends Component {
     const { authKey } = this.props
     if (authKey) {
       const api = axios.create({
-        baseURL: 'https://hackchicago.herokuapp.com/api/',
+        baseURL: 'https://api.hackchicago.io/',
         headers: { Auth: authKey }
       })
       api
