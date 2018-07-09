@@ -14,33 +14,23 @@ class Projects extends Component {
   }
 
   loadProjects() {
-    const { authKey } = this.props
-    if (authKey) {
-      const api = axios.create({
-        baseURL: 'https://api.hackchicago.io/',
-        headers: { Auth: authKey }
-      })
-      api
-        .get('v1/projects')
-        .then(res => {
-          this.setState({
-            projects: res.data,
-            status: 'success',
-            message: res.statusText
-          })
+    axios({
+      method: 'get',
+      url: 'http://localhost:8080/v1/projects'
+    })
+      .then(res => {
+        this.setState({
+          projects: res.data,
+          status: 'success',
+          message: res.statusText
         })
-        .catch(error => {
-          this.setState({
-            message: error.response.data.message,
-            status: 'error'
-          })
-        })
-    } else {
-      this.setState({
-        message: 'No authentication key provided',
-        status: 'error'
       })
-    }
+      .catch(error => {
+        this.setState({
+          message: error.response.data,
+          status: 'error'
+        })
+      })
   }
 
   componentDidMount() {

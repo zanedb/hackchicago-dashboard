@@ -5,7 +5,7 @@ import { Text } from '@hackclub/design-system'
 
 class LoginForm extends Component {
   state = {
-    status: ''
+    status: this.props.status
   }
 
   render() {
