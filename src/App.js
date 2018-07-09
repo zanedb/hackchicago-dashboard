@@ -15,19 +15,25 @@ class App extends Component {
     const { status } = this.state
     return (
       <ThemeProvider>
-        <Heading m={3}><Link to="/">Dashboard</Link></Heading>
-        <Route exact path="/" component={() => (
-          <Fragment>
-            {status === 'not logged in' ? (
-              <Text f={3} color="accent" py={4} align="center" bold>
-                <Link to="/login">Login</Link>
-              </Text>
-            ) : (
-              <Projects authKey="" />
-            )}
-          </Fragment>
-        )}/>
-        <Route path="/login" component={LoginForm}/>
+        <Heading m={3}>
+          <Link to="/">Dashboard</Link>
+        </Heading>
+        <Route
+          exact
+          path="/"
+          component={() => (
+            <Fragment>
+              {status === 'not logged in' ? (
+                <Text f={3} color="accent" py={4} align="center" bold>
+                  <Link to="/login">Login</Link>
+                </Text>
+              ) : (
+                <Projects authKey="" />
+              )}
+            </Fragment>
+          )}
+        />
+        <Route path="/login" component={LoginForm} />
       </ThemeProvider>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Formik } from 'formik';
+import { Formik } from 'formik'
 import axios from 'axios'
 import { Text } from '@hackclub/design-system'
 
@@ -9,25 +9,25 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { status } = this.state;
-    return(
+    const { status } = this.state
+    return (
       <div>
         {status === '' ? (
           <Formik
             initialValues={{
-              email: '',
+              email: ''
             }}
             validate={values => {
               // same as above, but feel free to move this into a class method now.
-              let errors = {};
+              let errors = {}
               if (!values.email) {
-                errors.email = 'Required';
+                errors.email = 'Required'
               } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
               ) {
-                errors.email = 'Invalid email address';
+                errors.email = 'Invalid email address'
               }
-              return errors;
+              return errors
             }}
             onSubmit={(
               values,
@@ -65,7 +65,7 @@ class LoginForm extends Component {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting,
+              isSubmitting
             }) => (
               <form onSubmit={handleSubmit}>
                 <input
