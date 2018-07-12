@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import axios from 'axios'
+import axiosCookieJarSupport from 'node-axios-cookiejar'
+import tough from 'tough-cookie'
 import { Text } from '@hackclub/design-system'
+
+axiosCookieJarSupport(axios)
+const cookieJar = new tough.CookieJar()
 
 class LoginForm extends Component {
   state = {
@@ -37,9 +42,11 @@ class LoginForm extends Component {
                   url: 'http://localhost:8080/auth',
                   data: {
                     email: values.email
-                  }
+                  },
+                  withCredentials: true
                 })
                   .then(res => {
+                    console.log(res)
                     setSubmitting(false)
                     this.setState({
                       loginCodeSent: true
@@ -48,7 +55,8 @@ class LoginForm extends Component {
                   .catch(error => {
                     if (error.response.status === 401) {
                       this.setState({
-                        status: 'This email is not signed up.'
+                        status:
+                          'Error authenticating, either the email or token is invalid.'
                       })
                     } else {
                       this.setState({
@@ -63,7 +71,8 @@ class LoginForm extends Component {
                   data: {
                     email: values.email,
                     token: values.token
-                  }
+                  },
+                  withCredentials: true
                 })
                   .then(res => {
                     console.log(res)
@@ -76,7 +85,8 @@ class LoginForm extends Component {
                     console.log(error.response)
                     if (error.response.status === 401) {
                       this.setState({
-                        status: 'Error authenticating, either the email or token is invalid.'
+                        status:
+                          'Error authenticating, either the email or token is invalid.'
                       })
                     } else {
                       this.setState({
