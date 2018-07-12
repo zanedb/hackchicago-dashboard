@@ -96,14 +96,6 @@ class LoginForm extends Component {
               isSubmitting
             }) => (
               <form onSubmit={handleSubmit}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="youremail@gmail.com"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
                 {loginCodeSent === true ? (
                   <div>
                     <Text f={3} color="accent" py={4} bold>
@@ -119,7 +111,14 @@ class LoginForm extends Component {
                     />
                   </div>
                 ) : (
-                  <div />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="youremail@gmail.com"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
                 )}
                 {touched.email && errors.email && <div>{errors.email}</div>}
                 <button type="submit" disabled={isSubmitting}>
