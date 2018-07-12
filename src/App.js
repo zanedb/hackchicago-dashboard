@@ -31,7 +31,7 @@ class App extends Component {
                     <Link to="/login">Login</Link>
                   </Text>
                 ) : (
-                  <Projects authKey="" />
+                  <Projects />
                 )}
               </Fragment>
             )}

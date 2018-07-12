@@ -30,10 +30,7 @@ class LoginForm extends Component {
               }
               return errors
             }}
-            onSubmit={(
-              values,
-              { setSubmitting, setErrors }
-            ) => {
+            onSubmit={(values, { setSubmitting, setErrors }) => {
               if (values.token === '') {
                 axios({
                   method: 'post',
@@ -79,7 +76,7 @@ class LoginForm extends Component {
                     console.log(error.response)
                     if (error.response.status === 401) {
                       this.setState({
-                        status: 'This email is not signed up.'
+                        status: 'Error authenticating, either the email or token is invalid.'
                       })
                     } else {
                       this.setState({

@@ -27,7 +27,7 @@ class Projects extends Component {
       })
       .catch(error => {
         this.setState({
-          message: error.response.data,
+          message: error.response.statusText,
           status: 'error'
         })
       })
