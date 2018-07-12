@@ -11,6 +11,12 @@ class App extends Component {
   state = {
     status: ''
   }
+  
+  showProjects = () => {
+    this.setState({
+      status: 'logged in'
+    })
+  }
 
   render() {
     const { status } = this.state
@@ -27,9 +33,14 @@ class App extends Component {
             component={() => (
               <Fragment>
                 {status === '' ? (
-                  <Text f={3} color="accent" py={4} align="center" bold>
-                    <Link to="/login">Login</Link>
-                  </Text>
+                  <Fragment>
+                    <Text f={3} color="accent" py={4} align="center" bold>
+                      <Link to="/login">Login</Link>
+                    </Text>
+                    <button onClick={this.showProjects}>
+                      I am logged in (temp)
+                    </button>
+                  </Fragment>
                 ) : (
                   <Projects />
                 )}
