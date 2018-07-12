@@ -43,6 +43,7 @@ class LoginForm extends Component {
                   data: {
                     email: values.email
                   },
+                  jar: cookieJar,
                   withCredentials: true
                 })
                   .then(res => {
@@ -72,6 +73,7 @@ class LoginForm extends Component {
                     email: values.email,
                     token: values.token
                   },
+                  jar: cookieJar,
                   withCredentials: true
                 })
                   .then(res => {
