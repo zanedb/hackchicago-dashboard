@@ -16,7 +16,8 @@ class Projects extends Component {
   loadProjects() {
     axios({
       method: 'get',
-      url: 'http://localhost:8080/v1/projects'
+      url: 'http://localhost:8080/v1/projects',
+      withCredentials: true
     })
       .then(res => {
         this.setState({
