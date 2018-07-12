@@ -39,7 +39,7 @@ class LoginForm extends Component {
               if (values.token === '') {
                 axios({
                   method: 'post',
-                  url: 'http://localhost:8080/auth',
+                  url: 'https://api.hackchicago.io/auth',
                   data: {
                     email: values.email
                   },
@@ -68,7 +68,7 @@ class LoginForm extends Component {
               } else {
                 axios({
                   method: 'post',
-                  url: 'http://localhost:8080/auth',
+                  url: 'https://api.hackchicago.io/auth',
                   data: {
                     email: values.email,
                     token: values.token

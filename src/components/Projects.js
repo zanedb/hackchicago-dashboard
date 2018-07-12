@@ -16,7 +16,7 @@ class Projects extends Component {
   loadProjects() {
     axios({
       method: 'get',
-      url: 'http://localhost:8080/v1/projects',
+      url: 'https://api.hackchicago.io/v1/projects',
       withCredentials: true
     })
       .then(res => {
