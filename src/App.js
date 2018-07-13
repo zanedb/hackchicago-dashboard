@@ -10,15 +10,11 @@ import LoadingBar from './components/LoadingBar'
 import Projects from './components/Projects'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loginStatus: 'loading'
-    }
-    this.checkLoggedIn()
+  state = {
+    loginStatus: 'loading'
   }
 
-  checkLoggedIn() {
+  componentDidMount() {
     axios({
       method: 'get',
       url: 'https://api.hackchicago.io/v1/me',
