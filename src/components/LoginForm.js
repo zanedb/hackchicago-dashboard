@@ -53,14 +53,9 @@ class LoginForm extends Component {
                 })
                 .catch(error => {
                   if (error.response.status === 401) {
-                    this.setState({
-                      status:
-                        'Error authenticating, either the email or token is invalid.'
-                    })
+                    setErrors({ token: 'Invalid email address' })
                   } else {
-                    this.setState({
-                      status: error.response.statusText
-                    })
+                    setErrors({ token: 'An error occurred' })
                   }
                 })
             } else {
@@ -77,24 +72,17 @@ class LoginForm extends Component {
                 .then(res => {
                   console.log(res)
                   setSubmitting(true)
-                  this.setState({
-                    status: res.data.message
-                  })
                   if (res.data.message === 'Authenticated!') {
                     this.props.onLogin()
                   }
                 })
                 .catch(error => {
                   console.log(error.response)
+                  setSubmitting(false)
                   if (error.response.status === 401) {
-                    this.setState({
-                      status:
-                        'Error authenticating, either the email or token is invalid.'
-                    })
+                    setErrors({ token: 'Invalid token' })
                   } else {
-                    this.setState({
-                      status: error.response.statusText
-                    })
+                    setErrors({ token: 'An error occurred' })
                   }
                 })
             }
@@ -122,6 +110,7 @@ class LoginForm extends Component {
                     onBlur={handleBlur}
                     value={values.token}
                   />
+                  {touched.token && errors.token && <div>{errors.token}</div>}
                 </div>
               ) : (
                 <input
