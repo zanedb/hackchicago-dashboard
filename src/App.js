@@ -1,25 +1,57 @@
 import React, { Component, Fragment } from 'react'
 import './App.css'
-import { ThemeProvider, Heading, Text } from '@hackclub/design-system'
+import { ThemeProvider, Heading } from '@hackclub/design-system'
 import { Route, Link, Switch } from 'react-router-dom'
+import axios from 'axios'
 import LoginForm from './components/LoginForm'
 import NotFound from './components/NotFound'
+import LoadingBar from './components/LoadingBar'
 
 import Projects from './components/Projects'
 
 class App extends Component {
-  state = {
-    status: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginStatus: 'loading'
+    }
+    this.checkLoggedIn();
+  }
+
+  checkLoggedIn() {
+    axios({
+      method: 'get',
+      url: 'https://api.hackchicago.io/v1/me',
+      withCredentials: true
+    })
+      .then(res => {
+        console.log(res)
+        this.setState({
+          loginStatus: 'logged in'
+        })
+      })
+      .catch(error => {
+        console.log(error)
+        if (error.response.status === 401) {
+          this.setState({
+            loginStatus: 'not logged in'
+          })
+        } else {
+          this.setState({
+            loginStatus: 'error'
+          })
+        }
+      })
   }
   
   showProjects = () => {
     this.setState({
-      status: 'logged in'
+      loginStatus: 'logged in'
     })
   }
 
   render() {
-    const { status } = this.state
+    const { loginStatus } = this.state
     return (
       <ThemeProvider>
         <Heading m={3}>
@@ -32,25 +64,19 @@ class App extends Component {
             path="/"
             component={() => (
               <Fragment>
-                {status === '' ? (
-                  <Fragment>
-                    <Text f={3} color="accent" py={4} align="center" bold>
-                      <Link to="/login">Login</Link>
-                    </Text>
-                    <button onClick={this.showProjects}>
-                      I am logged in (temp)
-                    </button>
-                  </Fragment>
+                {loginStatus === 'loading' ? (
+                  <LoadingBar />
                 ) : (
-                  <Projects />
+                  <Fragment>
+                    {loginStatus === 'logged in' ? (
+                      <Projects />
+                    ) : (
+                      <LoginForm onLogin={this.showProjects} />
+                    )}
+                  </Fragment>
                 )}
               </Fragment>
             )}
-          />
-          <Route
-            path="/login"
-            component={() => <LoginForm status={status} />}
-            status=""
           />
           <Route component={NotFound} />
         </Switch>
