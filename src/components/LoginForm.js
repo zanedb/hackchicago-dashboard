@@ -1,43 +1,43 @@
-import React, { Component } from "react";
-import { Formik } from "formik";
-import axios from "axios";
-import axiosCookieJarSupport from "node-axios-cookiejar";
-import tough from "tough-cookie";
-import { Text } from "@hackclub/design-system";
+import React, { Component } from 'react'
+import { Formik } from 'formik'
+import axios from 'axios'
+import axiosCookieJarSupport from 'node-axios-cookiejar'
+import tough from 'tough-cookie'
+import { Text } from '@hackclub/design-system'
 
-axiosCookieJarSupport(axios);
-const cookieJar = new tough.CookieJar();
+axiosCookieJarSupport(axios)
+const cookieJar = new tough.CookieJar()
 
 class LoginForm extends Component {
   state = {
     loginCodeSent: false
-  };
+  }
 
   render() {
-    const { loginCodeSent } = this.state;
+    const { loginCodeSent } = this.state
     return (
       <div>
         <Formik
           initialValues={{
-            email: "",
-            token: ""
+            email: '',
+            token: ''
           }}
           validate={values => {
-            let errors = {};
+            let errors = {}
             if (!values.email) {
-              errors.email = "Required";
+              errors.email = 'Required'
             } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
             ) {
-              errors.email = "Invalid email address";
+              errors.email = 'Invalid email address'
             }
-            return errors;
+            return errors
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {
-            if (values.token === "") {
+            if (values.token === '') {
               axios({
-                method: "post",
-                url: "https://api.hackchicago.io/auth",
+                method: 'post',
+                url: 'https://api.hackchicago.io/auth',
                 data: {
                   email: values.email
                 },
@@ -45,28 +45,28 @@ class LoginForm extends Component {
                 withCredentials: true
               })
                 .then(res => {
-                  console.log(res);
-                  setSubmitting(false);
+                  console.log(res)
+                  setSubmitting(false)
                   this.setState({
                     loginCodeSent: true
-                  });
+                  })
                 })
                 .catch(error => {
                   if (error.response.status === 401) {
                     this.setState({
                       status:
-                        "Error authenticating, either the email or token is invalid."
-                    });
+                        'Error authenticating, either the email or token is invalid.'
+                    })
                   } else {
                     this.setState({
                       status: error.response.statusText
-                    });
+                    })
                   }
-                });
+                })
             } else {
               axios({
-                method: "post",
-                url: "https://api.hackchicago.io/auth",
+                method: 'post',
+                url: 'https://api.hackchicago.io/auth',
                 data: {
                   email: values.email,
                   token: values.token
@@ -75,28 +75,28 @@ class LoginForm extends Component {
                 withCredentials: true
               })
                 .then(res => {
-                  console.log(res);
-                  setSubmitting(true);
+                  console.log(res)
+                  setSubmitting(true)
                   this.setState({
                     status: res.data.message
-                  });
+                  })
                   if (res.data.message === 'Authenticated!') {
                     this.props.onLogin()
                   }
                 })
                 .catch(error => {
-                  console.log(error.response);
+                  console.log(error.response)
                   if (error.response.status === 401) {
                     this.setState({
                       status:
-                        "Error authenticating, either the email or token is invalid."
-                    });
+                        'Error authenticating, either the email or token is invalid.'
+                    })
                   } else {
                     this.setState({
                       status: error.response.statusText
-                    });
+                    })
                   }
-                });
+                })
             }
           }}
           render={({
@@ -141,8 +141,8 @@ class LoginForm extends Component {
           )}
         />
       </div>
-    );
+    )
   }
 }
 
-export default LoginForm;
+export default LoginForm

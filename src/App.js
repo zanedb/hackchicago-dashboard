@@ -11,11 +11,11 @@ import Projects from './components/Projects'
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loginStatus: 'loading'
     }
-    this.checkLoggedIn();
+    this.checkLoggedIn()
   }
 
   checkLoggedIn() {
@@ -43,7 +43,7 @@ class App extends Component {
         }
       })
   }
-  
+
   showProjects = () => {
     this.setState({
       loginStatus: 'logged in'
