@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 import axios from 'axios'
 import axiosCookieJarSupport from 'node-axios-cookiejar'
 import tough from 'tough-cookie'
-import { Text, Field, Button } from '@hackclub/design-system'
+import { Text, Field, Button, Container } from '@hackclub/design-system'
 
 axiosCookieJarSupport(axios)
 const cookieJar = new tough.CookieJar()
@@ -16,7 +16,7 @@ class LoginForm extends Component {
   render() {
     const { loginCodeSent } = this.state
     return (
-      <div>
+      <Container maxWidth={32}>
         <Formik
           initialValues={{
             email: '',
@@ -131,7 +131,7 @@ class LoginForm extends Component {
             </form>
           )}
         />
-      </div>
+      </Container>
     )
   }
 }
