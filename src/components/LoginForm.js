@@ -33,58 +33,59 @@ class LoginForm extends Component {
             }
             return errors
           }}
-          onSubmit={(values, { setSubmitting, setErrors }) => {
+          onSubmit={async (values, { setSubmitting, setErrors }) => {
             if (values.token === '') {
-              axios({
-                method: 'post',
-                url: 'https://api.hackchicago.io/auth',
-                data: {
-                  email: values.email
-                },
-                jar: cookieJar,
-                withCredentials: true
-              })
-                .then(res => {
-                  console.log(res)
+              try {
+                const generateTokenRequest = await axios({
+                  method: 'post',
+                  url: 'https://api.hackchicago.io/auth',
+                  data: {
+                    email: values.email
+                  },
+                  jar: cookieJar,
+                  withCredentials: true
+                })
+                if (generateTokenRequest.status === 200) {
                   setSubmitting(false)
                   this.setState({
                     loginCodeSent: true
                   })
-                })
-                .catch(error => {
-                  if (error.response.status === 401) {
-                    setErrors({ token: 'Invalid email address' })
-                  } else {
-                    setErrors({ token: 'An error occurred' })
-                  }
-                })
+                } else if (generateTokenRequest.status === 401) {
+                  setErrors({ token: 'Invalid email address' })
+                } else {
+                  setErrors({ token: 'An error occurred' })
+                }
+              } catch (error) {
+                console.log(error)
+              }
             } else {
-              axios({
-                method: 'post',
-                url: 'https://api.hackchicago.io/auth',
-                data: {
-                  email: values.email,
-                  token: values.token
-                },
-                jar: cookieJar,
-                withCredentials: true
-              })
-                .then(res => {
-                  console.log(res)
+              try {
+                const loginWithTokenRequest = await axios({
+                  method: 'post',
+                  url: 'https://api.hackchicago.io/auth',
+                  data: {
+                    email: values.email,
+                    token: values.token
+                  },
+                  jar: cookieJar,
+                  withCredentials: true
+                })
+                if (loginWithTokenRequest.status === 200) {
                   setSubmitting(true)
-                  if (res.data.message === 'Authenticated!') {
+                  if (loginWithTokenRequest.data.message === 'Authenticated!') {
                     this.props.onLogin()
                   }
-                })
-                .catch(error => {
-                  console.log(error.response)
+                } else {
                   setSubmitting(false)
-                  if (error.response.status === 401) {
+                  if (loginWithTokenRequest.status === 401) {
                     setErrors({ token: 'Invalid email or token' })
                   } else {
                     setErrors({ token: 'An error occurred' })
                   }
-                })
+                }
+              } catch (error) {
+                console.log(error)
+              }
             }
           }}
           render={({

@@ -15,30 +15,26 @@ class App extends Component {
     loginStatus: 'loading'
   }
 
-  componentDidMount() {
-    axios({
-      method: 'get',
-      url: 'https://api.hackchicago.io/v1/me',
-      withCredentials: true
-    })
-      .then(res => {
-        console.log(res)
+  async componentDidMount() {
+    try {
+      const loginRequest = await axios({
+        method: 'get',
+        url: 'https://api.hackchicago.io/v1/me',
+        withCredentials: true
+      })
+      console.log(loginRequest)
+      if (loginRequest.status === 200) {
         this.setState({
           loginStatus: 'logged in'
         })
-      })
-      .catch(error => {
-        console.log(error)
-        if (error.response.status === 401) {
-          this.setState({
-            loginStatus: 'not logged in'
-          })
-        } else {
-          this.setState({
-            loginStatus: 'error'
-          })
-        }
-      })
+      } else if (loginRequest.status === 401) {
+        this.setState({
+          loginStatus: 'not logged in'
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   showProjects = () => {

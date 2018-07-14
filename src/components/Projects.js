@@ -13,25 +13,28 @@ class Projects extends Component {
     message: ''
   }
 
-  loadProjects() {
-    axios({
-      method: 'get',
-      url: 'https://api.hackchicago.io/v1/projects',
-      withCredentials: true
-    })
-      .then(res => {
-        this.setState({
-          projects: res.data,
-          status: 'success',
-          message: res.statusText
-        })
+  async loadProjects() {
+    try {
+      const projectLoad = await axios({
+        method: 'get',
+        url: 'https://api.hackchicago.io/v1/projects',
+        withCredentials: true
       })
-      .catch(error => {
+      if (projectLoad.status === 200) {
         this.setState({
-          message: error.response.statusText,
+          projects: projectLoad.data,
+          status: 'success',
+          message: projectLoad.statusText
+        })
+      } else {
+        this.setState({
+          message: projectLoad.statusText,
           status: 'error'
         })
-      })
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   componentDidMount() {
