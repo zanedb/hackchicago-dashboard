@@ -35,6 +35,16 @@ class LoginForm extends Component {
             }
             if (!values.token && this.state.loginCodeSent === true) {
               errors.token = 'Required'
+            } else if (
+              Array.from(values.token).length !== 6 &&
+              this.state.loginCodeSent === true
+            ) {
+              errors.token = 'Must be 6 characters'
+            } else if (
+              values.token.match(/^[0-9]+$/) == null &&
+              this.state.loginCodeSent === true
+            ) {
+              errors.token = 'Numbers only'
             }
             return errors
           }}
