@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import { Heading, Text, Card } from '@hackclub/design-system'
+import { Heading, Text, Card, Link } from '@hackclub/design-system'
 
 const Project = ({
   name,
   description,
   submitter,
+  link,
   tagline,
   timestamp,
   ...props
 }) => (
   <Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
     <Heading m={3} mb={1}>
-      {name}
+      <Link href={link} target="_blank">
+        {name} {link !== undefined && `»`}
+      </Link>
     </Heading>
     <Text m={3} fontSize={2} mt={1}>
       Submitted by {submitter.name}

@@ -67,9 +67,10 @@ class Projects extends Component {
                 <Project
                   key={project.id}
                   name={project.name}
+                  link={project.link}
+                  tagline={project.tagline}
                   description={project.description}
                   submitter={project.submitter}
-                  tagline={project.tagline}
                   timestamp={project.timestamp}
                 />
               ))
