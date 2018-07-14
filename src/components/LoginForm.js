@@ -80,7 +80,7 @@ class LoginForm extends Component {
                   console.log(error.response)
                   setSubmitting(false)
                   if (error.response.status === 401) {
-                    setErrors({ token: 'Invalid token' })
+                    setErrors({ token: 'Invalid email or token' })
                   } else {
                     setErrors({ token: 'An error occurred' })
                   }

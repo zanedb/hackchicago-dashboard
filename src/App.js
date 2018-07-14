@@ -6,6 +6,7 @@ import axios from 'axios'
 import LoginForm from './components/LoginForm'
 import NotFound from './components/NotFound'
 import LoadingBar from './components/LoadingBar'
+import LogoutButton from './components/LogoutButton'
 
 import Projects from './components/Projects'
 
@@ -65,7 +66,10 @@ class App extends Component {
                 ) : (
                   <Fragment>
                     {loginStatus === 'logged in' ? (
-                      <Projects />
+                      <Fragment>
+                        <LogoutButton />
+                        <Projects />
+                      </Fragment>
                     ) : (
                       <LoginForm onLogin={this.showProjects} />
                     )}
