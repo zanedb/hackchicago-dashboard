@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Text, Container } from '@hackclub/design-system'
 import LoadingBar from './LoadingBar'
 import ErrorPage from './ErrorPage'
