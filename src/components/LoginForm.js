@@ -33,16 +33,13 @@ class LoginForm extends Component {
             ) {
               errors.email = 'Invalid email address'
             }
-            if (!values.token && this.state.loginCodeSent === true) {
+            if (!values.token && this.state.loginCodeSent) {
               errors.token = 'Required'
-            } else if (
-              values.token.length !== 6 &&
-              this.state.loginCodeSent === true
-            ) {
+            } else if (values.token.length !== 6 && this.state.loginCodeSent) {
               errors.token = 'Must be 6 characters'
             } else if (
               values.token.match(/^[0-9]+$/) == null &&
-              this.state.loginCodeSent === true
+              this.state.loginCodeSent
             ) {
               errors.token = 'Numbers only'
             }
