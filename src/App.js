@@ -46,7 +46,7 @@ class App extends Component {
       loginStatus: 'logged in'
     })
   }
-  
+
   doLogout = () => {
     this.setState({
       loginStatus: 'not logged in'
@@ -73,7 +73,7 @@ class App extends Component {
                   <Fragment>
                     {loginStatus === 'logged in' ? (
                       <Fragment>
-                        <LogoutButton onLogout={this.doLogout}/>
+                        <LogoutButton onLogout={this.doLogout} />
                         <Projects />
                       </Fragment>
                     ) : (
