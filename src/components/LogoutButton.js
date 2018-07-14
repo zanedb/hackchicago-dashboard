@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Button } from '@hackclub/design-system'
 
 class LogoutButton extends Component {
   logout = () => {
@@ -21,7 +22,7 @@ class LogoutButton extends Component {
   }
 
   render() {
-    return <button onClick={this.logout}>Logout</button>
+    return <Button onClick={this.logout} bg='accent'>Logout</Button>
   }
 }
 
