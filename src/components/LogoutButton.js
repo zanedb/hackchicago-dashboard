@@ -10,8 +10,8 @@ class LogoutButton extends Component {
     })
       .then(res => {
         console.log(res)
-        if (res.data.message === 'Authenticated!') {
-          this.props.onLogin()
+        if (res.data.message === 'Logged out!') {
+          this.props.onLogout()
         }
       })
       .catch(error => {
