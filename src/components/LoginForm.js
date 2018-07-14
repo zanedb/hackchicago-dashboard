@@ -5,6 +5,8 @@ import axiosCookieJarSupport from 'node-axios-cookiejar'
 import tough from 'tough-cookie'
 import { Text, Field, Button, Container } from '@hackclub/design-system'
 
+import Submit from './Submit'
+
 axiosCookieJarSupport(axios)
 const cookieJar = new tough.CookieJar()
 
@@ -16,7 +18,7 @@ class LoginForm extends Component {
   render() {
     const { loginCodeSent } = this.state
     return (
-      <Container maxWidth={32}>
+      <Container p={4} maxWidth={32}>
         <Formik
           initialValues={{
             email: '',
@@ -30,6 +32,9 @@ class LoginForm extends Component {
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
             ) {
               errors.email = 'Invalid email address'
+            }
+            if (!values.token && this.state.loginCodeSent === true) {
+              errors.token = 'Required'
             }
             return errors
           }}
@@ -104,7 +109,7 @@ class LoginForm extends Component {
                     Please check your email, and enter the token.
                   </Text>
                   <Field
-                    type="token"
+                    type="text"
                     name="token"
                     placeholder="000000"
                     onChange={handleChange}
@@ -126,9 +131,13 @@ class LoginForm extends Component {
                   error={errors.email}
                 />
               )}
-              <Button type="submit" disabled={isSubmitting} bg="accent">
-                Submit
-              </Button>
+              <Submit
+                onClick={this.handleSubmit}
+                disabled={isSubmitting}
+                bg="accent"
+                scale={true}
+                value="Submit"
+              />
             </form>
           )}
         />

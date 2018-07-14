@@ -10,7 +10,7 @@ class Project extends Component {
           {name}
         </Heading>
         <Text m={3} fontSize={2} mt={1}>
-          Submitted by {submitter.email}
+          Submitted by {submitter}
         </Text>
         <Text m={3} fontSize={1}>
           {tagline}

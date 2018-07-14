@@ -65,7 +65,7 @@ class Projects extends Component {
             ) : (
               projects.map(project => (
                 <Project
-                  key={project._id}
+                  key={project.id}
                   name={project.name}
                   description={project.description}
                   submitter={project.submitter}

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import './../App.css'
-import { ThemeProvider, Heading, Box } from '@hackclub/design-system'
+import { ThemeProvider, Heading, Box, Button } from '@hackclub/design-system'
 import { Route, Link, Switch } from 'react-router-dom'
 import axios from 'axios'
 
@@ -9,10 +9,12 @@ import NotFound from './../components/NotFound'
 import LoadingBar from './../components/LoadingBar'
 import LogoutButton from './../components/LogoutButton'
 import Projects from './../components/Projects'
+import AddProject from './../components/AddProject'
 
 class App extends Component {
   state = {
-    loginStatus: 'loading'
+    loginStatus: 'loading',
+    view: 'projects'
   }
 
   async componentDidMount() {
@@ -27,19 +29,24 @@ class App extends Component {
         this.setState({
           loginStatus: 'logged in'
         })
-      } else if (loginRequest.status === 401) {
-        this.setState({
-          loginStatus: 'not logged in'
-        })
       }
     } catch (error) {
-      console.error(error)
+      this.setState({
+        loginStatus: 'not logged in'
+      })
     }
+  }
+
+  addProject = () => {
+    this.setState({
+      view: 'addProject'
+    })
   }
 
   showProjects = () => {
     this.setState({
-      loginStatus: 'logged in'
+      loginStatus: 'logged in',
+      view: 'projects'
     })
   }
 
@@ -50,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const { loginStatus } = this.state
+    const { loginStatus, view } = this.state
     return (
       <ThemeProvider>
         <Switch>
@@ -69,9 +76,30 @@ class App extends Component {
                           <Heading m={3}>
                             <Link to="/">Projects</Link>
                           </Heading>
+                          {view === 'projects' ? (
+                            <Button
+                              onClick={this.addProject}
+                              bg="accent"
+                              m={2}
+                              scale={true}
+                            >
+                              Add Project
+                            </Button>
+                          ) : (
+                            <Button
+                              onClick={this.showProjects}
+                              bg="accent"
+                              m={2}
+                            >
+                              View Projects
+                            </Button>
+                          )}
                           <LogoutButton onLogout={this.doLogout} />
                         </Box>
-                        <Projects />
+                        {view === 'projects' && <Projects />}
+                        {view === 'addProject' && (
+                          <AddProject onEnd={this.showProjects} />
+                        )}
                       </Fragment>
                     ) : (
                       <Box align="center">
