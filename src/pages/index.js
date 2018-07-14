@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react'
-import './App.css'
+import './../App.css'
 import { ThemeProvider, Heading } from '@hackclub/design-system'
 import { Route, Link, Switch } from 'react-router-dom'
 import axios from 'axios'
-import LoginForm from './components/LoginForm'
-import NotFound from './components/NotFound'
-import LoadingBar from './components/LoadingBar'
-import LogoutButton from './components/LogoutButton'
 
-import Projects from './components/Projects'
+import LoginForm from './../components/LoginForm'
+import NotFound from './../components/NotFound'
+import LoadingBar from './../components/LoadingBar'
+import LogoutButton from './../components/LogoutButton'
+import Projects from './../components/Projects'
 
 class App extends Component {
   state = {
