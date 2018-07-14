@@ -21,6 +21,9 @@ class AddProject extends Component {
             if (!values.name) {
               errors.name = 'Required'
             }
+            if (!values.link) {
+              errors.link = 'Required'
+            }
             if (!values.tagline) {
               errors.tagline = 'Required'
             }
