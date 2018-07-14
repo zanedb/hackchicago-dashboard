@@ -22,7 +22,11 @@ class LogoutButton extends Component {
   }
 
   render() {
-    return <Button onClick={this.logout} bg='accent'>Logout</Button>
+    return (
+      <Button onClick={this.logout} bg="accent">
+        Logout
+      </Button>
+    )
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text } from '@hackclub/design-system'
+import { Text, Container } from '@hackclub/design-system'
 import LoadingBar from './LoadingBar'
 import ErrorPage from './ErrorPage'
 import Project from './Project'
@@ -54,7 +54,7 @@ class Projects extends Component {
       case 'success':
         console.log(projects)
         return (
-          <Fragment>
+          <Container p={4}>
             {projects.length < 1 ? (
               <Text f={3} color="muted" py={4} align="center" bold>
                 No projects yet!
@@ -71,7 +71,7 @@ class Projects extends Component {
                 />
               ))
             )}
-          </Fragment>
+          </Container>
         )
       case 'error':
         return (

@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 import axios from 'axios'
 import axiosCookieJarSupport from 'node-axios-cookiejar'
 import tough from 'tough-cookie'
-import { Text } from '@hackclub/design-system'
+import { Text, Field, Button } from '@hackclub/design-system'
 
 axiosCookieJarSupport(axios)
 const cookieJar = new tough.CookieJar()
@@ -102,30 +102,32 @@ class LoginForm extends Component {
                   <Text f={3} color="accent" py={4} bold>
                     Please check your email, and enter the token.
                   </Text>
-                  <input
+                  <Field
                     type="token"
                     name="token"
                     placeholder="000000"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.token}
+                    error={errors.token}
+                    label="Token"
                   />
-                  {touched.token && errors.token && <div>{errors.token}</div>}
                 </div>
               ) : (
-                <input
+                <Field
                   type="email"
                   name="email"
                   placeholder="youremail@gmail.com"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
+                  label="Email"
+                  error={errors.email}
                 />
               )}
-              {touched.email && errors.email && <div>{errors.email}</div>}
-              <button type="submit" disabled={isSubmitting}>
+              <Button type="submit" disabled={isSubmitting} bg="accent">
                 Submit
-              </button>
+              </Button>
             </form>
           )}
         />

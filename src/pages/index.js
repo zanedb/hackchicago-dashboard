@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import './../App.css'
-import { ThemeProvider, Heading } from '@hackclub/design-system'
+import { ThemeProvider, Heading, Box } from '@hackclub/design-system'
 import { Route, Link, Switch } from 'react-router-dom'
 import axios from 'axios'
 
@@ -57,10 +57,6 @@ class App extends Component {
     const { loginStatus } = this.state
     return (
       <ThemeProvider>
-        <Heading m={3}>
-          <Link to="/">Dashboard</Link>
-        </Heading>
-
         <Switch>
           <Route
             exact
@@ -73,11 +69,21 @@ class App extends Component {
                   <Fragment>
                     {loginStatus === 'logged in' ? (
                       <Fragment>
-                        <LogoutButton onLogout={this.doLogout} />
+                        <Box align="center">
+                          <Heading m={3}>
+                            <Link to="/">Projects</Link>
+                          </Heading>
+                          <LogoutButton onLogout={this.doLogout} />
+                        </Box>
                         <Projects />
                       </Fragment>
                     ) : (
-                      <LoginForm onLogin={this.showProjects} />
+                      <Box align="center">
+                        <Heading m={3}>
+                          <Link to="/">Login</Link>
+                        </Heading>
+                        <LoginForm onLogin={this.showProjects} />
+                      </Box>
                     )}
                   </Fragment>
                 )}
