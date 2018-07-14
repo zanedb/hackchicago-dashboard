@@ -107,12 +107,7 @@ const AddProject = props => (
             scale={true}
             value="Submit"
           />
-          <Button
-            onClick={props.onEnd}
-            bg="accent"
-            inverted={true}
-            m={2}
-          >
+          <Button onClick={props.onEnd} bg="accent" inverted={true} m={2}>
             Cancel
           </Button>
         </form>

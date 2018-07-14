@@ -20,6 +20,6 @@ const Project = ({
       {tagline}
     </Text>
   </Card>
-);
+)
 
 export default Project
