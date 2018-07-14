@@ -36,7 +36,7 @@ class LoginForm extends Component {
             if (!values.token && this.state.loginCodeSent === true) {
               errors.token = 'Required'
             } else if (
-              Array.from(values.token).length !== 6 &&
+              values.token.length !== 6 &&
               this.state.loginCodeSent === true
             ) {
               errors.token = 'Must be 6 characters'
