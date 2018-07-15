@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
 import { Text, Container } from '@hackclub/design-system'
-import LoadingBar from './LoadingBar'
-import ErrorPage from './ErrorPage'
-import Project from './Project'
 import axios from 'axios'
+import React, { Component } from 'react'
+
+import ErrorPage from './ErrorPage'
+import LoadingBar from './LoadingBar'
+import Project from './Project'
 
 class Projects extends Component {
   state = {

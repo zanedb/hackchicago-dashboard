@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
 import {
-  Heading,
-  Text,
-  Card,
-  Link,
   Box,
   Button,
+  Card,
+  Flex,
+  Heading,
   Icon,
-  Flex
+  Link,
+  Text
 } from '@hackclub/design-system'
+import React from 'react'
 
 const Centered = Box.extend`
   display: inline-flex;

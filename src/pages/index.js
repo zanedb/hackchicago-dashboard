@@ -1,15 +1,14 @@
-import React, { Component, Fragment } from 'react'
-import './../App.css'
-import { ThemeProvider, Heading, Box, Button } from '@hackclub/design-system'
-import { Link } from 'react-router-dom'
+import { Box, Button, Heading } from '@hackclub/design-system'
 import axios from 'axios'
+import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
-import LoginForm from './../components/LoginForm'
-import NotFound from './../components/NotFound'
-import LoadingBar from './../components/LoadingBar'
-import LogoutButton from './../components/LogoutButton'
-import Projects from './../components/Projects'
 import AddProject from './../components/AddProject'
+import LoadingBar from './../components/LoadingBar'
+import LoginForm from './../components/LoginForm'
+import LogoutButton from './../components/LogoutButton'
+import NotFound from './../components/NotFound'
+import Projects from './../components/Projects'
 
 class App extends Component {
   state = {

@@ -1,5 +1,5 @@
-import React from 'react'
 import { Text } from '@hackclub/design-system'
+import React from 'react'
 
 const ErrorPage = props => (
   <Text color="error" py={3} align="center" {...props}>

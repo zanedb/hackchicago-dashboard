@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import axios from 'axios'
 import { Button } from '@hackclub/design-system'
+import axios from 'axios'
+import React, { Component } from 'react'
 
 class LogoutButton extends Component {
   logout = async () => {
