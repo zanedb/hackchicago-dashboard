@@ -58,55 +58,49 @@ class App extends Component {
 
   render() {
     const { loginStatus, view } = this.state
-    return (
-      <Fragment>
-        {loginStatus === 'loading' ? (
-          <LoadingBar />
-        ) : (
+
+    switch(loginStatus) {
+      case 'loading':
+        return <LoadingBar />
+      case 'logged in':
+        return (
           <Fragment>
-            {loginStatus === 'logged in' ? (
-              <Fragment>
-                <Box align="center">
-                  <Heading m={3}>
-                    <Link to="/">Projects</Link>
-                  </Heading>
-                  {view === 'projects' ? (
-                    <Button
-                      onClick={this.addProject}
-                      bg="accent"
-                      m={2}
-                      scale={true}
-                    >
-                      Add Project
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={this.showProjects}
-                      bg="accent"
-                      m={2}
-                    >
-                      View Projects
-                    </Button>
-                  )}
-                  <LogoutButton onLogout={this.doLogout} />
-                </Box>
-                {view === 'projects' && <Projects />}
-                {view === 'addProject' && (
-                  <AddProject onEnd={this.showProjects} />
-                )}
-              </Fragment>
-            ) : (
-              <Box align="center">
-                <Heading m={3}>
-                  <Link to="/">Login</Link>
-                </Heading>
-                <LoginForm onLogin={this.showProjects} />
-              </Box>
+            <Box align="center">
+              <Heading m={3}>
+                <Link to="/">Projects</Link>
+              </Heading>
+              {view === 'projects' ? (
+                <Button
+                  onClick={this.addProject}
+                  bg="accent"
+                  m={2}
+                  scale={true}
+                >
+                  Add Project
+                </Button>
+              ) : (
+                <Button onClick={this.showProjects} bg="accent" m={2}>
+                  View Projects
+                </Button>
+              )}
+              <LogoutButton onLogout={this.doLogout} />
+            </Box>
+            {view === 'projects' && <Projects />}
+            {view === 'addProject' && (
+              <AddProject onEnd={this.showProjects} />
             )}
           </Fragment>
-        )}
-      </Fragment>
-    )
+        )
+      case 'not logged in':
+        return (
+          <Box align="center">
+            <Heading m={3}>
+              <Link to="/">Login</Link>
+            </Heading>
+            <LoginForm onLogin={this.showProjects} />
+          </Box>
+        )
+    }
   }
 }
 
