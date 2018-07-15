@@ -39,7 +39,11 @@ const Project = ({
       <Centered px={1} ml={1} mr={1} align="center">
         <UpvoteButton bg="smoke" color="slate">
           <Icon size={20} name="arrow_upward" />
-          <Text.span ml={1} f={2} children={upvotesCount} />
+          <Text.span
+            ml={1}
+            f={2}
+            children={upvotesCount === undefined ? '0' : upvotesCount}
+          />
         </UpvoteButton>
       </Centered>
       <Box px={1} ml={1}>
