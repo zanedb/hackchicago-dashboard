@@ -15,20 +15,14 @@ const AddProject = props => (
         description: ''
       }}
       validate={values => {
-        let errors = {}
-        if (!values.name) {
-          errors.name = 'Required'
-        }
-        if (!values.link) {
-          errors.link = 'Required'
-        }
-        if (!values.tagline) {
-          errors.tagline = 'Required'
-        }
-        if (!values.description) {
-          errors.description = 'Required'
-        }
-        return errors
+        console.log(values)
+        const allErrors = Object.keys(values).reduce((errors, value) => {
+          if(!values[value]) {
+            errors[value] = 'Required'
+          }
+          return errors
+        }, {})
+        return allErrors
       }}
       onSubmit={async (values, { setSubmitting, setErrors }) => {
         try {
