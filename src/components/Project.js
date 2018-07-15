@@ -10,12 +10,6 @@ import {
 } from '@hackclub/design-system'
 import React from 'react'
 
-const Centered = Box.extend`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-`
-
 const UpvoteButton = Button.button.extend`
   display: inline-flex;
   align-items: center;
@@ -35,18 +29,16 @@ const Project = ({
   ...props
 }) => (
   <Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
-    <Flex>
-      <Centered px={1} ml={1} mr={1} align="center">
-        <UpvoteButton bg="smoke" color="slate">
-          <Icon size={20} name="arrow_upward" />
-          <Text.span
-            ml={1}
-            f={2}
-            children={upvotesCount === undefined ? '0' : upvotesCount}
-          />
-        </UpvoteButton>
-      </Centered>
-      <Box px={1} ml={1}>
+    <Flex px={1} ml={1} mr={1} align="center">
+      <UpvoteButton bg="smoke" color="slate">
+        <Icon size={20} name="arrow_upward" />
+        <Text.span
+          ml={1}
+          f={2}
+          children={upvotesCount === undefined ? '0' : upvotesCount}
+        />
+      </UpvoteButton>
+      <Box px={1} ml={1} align="left">
         <Heading m={3} mb={1}>
           <Link href={link} target="_blank">
             {name} {link !== undefined && `»`}
