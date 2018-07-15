@@ -93,7 +93,8 @@ const AddProject = props => (
           <Field
             type="textarea"
             name="description"
-            placeholder="Write an extended description of your project here"
+            placeholder="Write an extended description of your project here (markdown supported!)"
+            rows={10}
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.description}

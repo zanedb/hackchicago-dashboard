@@ -72,6 +72,7 @@ class Projects extends Component {
                   description={project.description}
                   submitter={project.submitter}
                   timestamp={project.timestamp}
+                  upvotesCount={2}
                 />
               ))
             )}
