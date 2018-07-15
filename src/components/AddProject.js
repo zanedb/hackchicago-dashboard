@@ -15,9 +15,8 @@ const AddProject = props => (
         description: ''
       }}
       validate={values => {
-        console.log(values)
         const allErrors = Object.keys(values).reduce((errors, value) => {
-          if(!values[value]) {
+          if (!values[value]) {
             errors[value] = 'Required'
           }
           return errors
