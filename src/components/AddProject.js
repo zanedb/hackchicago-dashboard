@@ -66,7 +66,7 @@ const AddProject = props => (
           <Field
             type="url"
             name="link"
-            placeholder="https://www.example.com"
+            placeholder="Link to a working demo, GitHub repository, etc."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.link}
