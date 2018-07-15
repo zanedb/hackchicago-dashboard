@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Heading, Text, Card, Link } from '@hackclub/design-system'
 
 const Project = ({

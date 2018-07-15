@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container, Field, Button } from '@hackclub/design-system'
 import { Formik } from 'formik'
 import axios from 'axios'
