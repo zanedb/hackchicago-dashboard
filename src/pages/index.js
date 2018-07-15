@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import './../App.css'
 import { ThemeProvider, Heading, Box, Button } from '@hackclub/design-system'
-import { Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import LoginForm from './../components/LoginForm'
@@ -59,64 +59,53 @@ class App extends Component {
   render() {
     const { loginStatus, view } = this.state
     return (
-      <ThemeProvider>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => (
+      <Fragment>
+        {loginStatus === 'loading' ? (
+          <LoadingBar />
+        ) : (
+          <Fragment>
+            {loginStatus === 'logged in' ? (
               <Fragment>
-                {loginStatus === 'loading' ? (
-                  <LoadingBar />
-                ) : (
-                  <Fragment>
-                    {loginStatus === 'logged in' ? (
-                      <Fragment>
-                        <Box align="center">
-                          <Heading m={3}>
-                            <Link to="/">Projects</Link>
-                          </Heading>
-                          {view === 'projects' ? (
-                            <Button
-                              onClick={this.addProject}
-                              bg="accent"
-                              m={2}
-                              scale={true}
-                            >
-                              Add Project
-                            </Button>
-                          ) : (
-                            <Button
-                              onClick={this.showProjects}
-                              bg="accent"
-                              m={2}
-                            >
-                              View Projects
-                            </Button>
-                          )}
-                          <LogoutButton onLogout={this.doLogout} />
-                        </Box>
-                        {view === 'projects' && <Projects />}
-                        {view === 'addProject' && (
-                          <AddProject onEnd={this.showProjects} />
-                        )}
-                      </Fragment>
-                    ) : (
-                      <Box align="center">
-                        <Heading m={3}>
-                          <Link to="/">Login</Link>
-                        </Heading>
-                        <LoginForm onLogin={this.showProjects} />
-                      </Box>
-                    )}
-                  </Fragment>
+                <Box align="center">
+                  <Heading m={3}>
+                    <Link to="/">Projects</Link>
+                  </Heading>
+                  {view === 'projects' ? (
+                    <Button
+                      onClick={this.addProject}
+                      bg="accent"
+                      m={2}
+                      scale={true}
+                    >
+                      Add Project
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={this.showProjects}
+                      bg="accent"
+                      m={2}
+                    >
+                      View Projects
+                    </Button>
+                  )}
+                  <LogoutButton onLogout={this.doLogout} />
+                </Box>
+                {view === 'projects' && <Projects />}
+                {view === 'addProject' && (
+                  <AddProject onEnd={this.showProjects} />
                 )}
               </Fragment>
+            ) : (
+              <Box align="center">
+                <Heading m={3}>
+                  <Link to="/">Login</Link>
+                </Heading>
+                <LoginForm onLogin={this.showProjects} />
+              </Box>
             )}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </ThemeProvider>
+          </Fragment>
+        )}
+      </Fragment>
     )
   }
 }
