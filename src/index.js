@@ -7,7 +7,7 @@ import NotFound from './components/NotFound'
 
 ReactDOM.render(
   <BrowserRouter>
-    <ThemeProvider>
+    <ThemeProvider webfonts>
       <Switch>
         <Route path="/" component={App} exact />
         <Route component={NotFound} />
