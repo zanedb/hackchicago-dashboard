@@ -15,20 +15,13 @@ const AddProject = props => (
         description: ''
       }}
       validate={values => {
-        let errors = {}
-        if (!values.name) {
-          errors.name = 'Required'
-        }
-        if (!values.link) {
-          errors.link = 'Required'
-        }
-        if (!values.tagline) {
-          errors.tagline = 'Required'
-        }
-        if (!values.description) {
-          errors.description = 'Required'
-        }
-        return errors
+        const allErrors = Object.keys(values).reduce((errors, value) => {
+          if (!values[value]) {
+            errors[value] = 'Required'
+          }
+          return errors
+        }, {})
+        return allErrors
       }}
       onSubmit={async (values, { setSubmitting, setErrors }) => {
         try {
@@ -73,7 +66,7 @@ const AddProject = props => (
           <Field
             type="url"
             name="link"
-            placeholder="https://www.example.com"
+            placeholder="Link to a working demo, GitHub repository, etc."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.link}
