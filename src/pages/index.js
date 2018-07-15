@@ -59,7 +59,7 @@ class App extends Component {
   render() {
     const { loginStatus, view } = this.state
 
-    switch(loginStatus) {
+    switch (loginStatus) {
       case 'loading':
         return <LoadingBar />
       case 'logged in':
@@ -70,12 +70,7 @@ class App extends Component {
                 <Link to="/">Projects</Link>
               </Heading>
               {view === 'projects' ? (
-                <Button
-                  onClick={this.addProject}
-                  bg="accent"
-                  m={2}
-                  scale={true}
-                >
+                <Button onClick={this.addProject} bg="accent" m={2} scale>
                   Add Project
                 </Button>
               ) : (
@@ -86,9 +81,7 @@ class App extends Component {
               <LogoutButton onLogout={this.doLogout} />
             </Box>
             {view === 'projects' && <Projects />}
-            {view === 'addProject' && (
-              <AddProject onEnd={this.showProjects} />
-            )}
+            {view === 'addProject' && <AddProject onEnd={this.showProjects} />}
           </Fragment>
         )
       case 'not logged in':
