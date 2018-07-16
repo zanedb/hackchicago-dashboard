@@ -75,10 +75,12 @@ class Projects extends Component {
         url: 'https://api.hackchicago.io/v1/me',
         withCredentials: true
       })
-      if (upvoteLoad.status === 200 && upvoteLoad.data.upvotes !== null) {
+      if (upvoteLoad.status === 200) {
         let upvotes = []
-        for (const upvote of upvoteLoad.data.upvotes) {
-          upvotes.push(upvote.projectId)
+        if (upvoteLoad.data.upvotes !== undefined) {
+          for (const upvote of upvoteLoad.data.upvotes) {
+            upvotes.push(upvote.projectId)
+          }
         }
         this.setState({
           upvotes
@@ -109,6 +111,7 @@ class Projects extends Component {
       case 'loading':
         return <LoadingBar />
       case 'success':
+        console.log(this.state.upvotes)
         return (
           <Container p={4}>
             {projects.length < 1 ? (
