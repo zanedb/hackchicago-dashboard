@@ -23,7 +23,15 @@ class Projects extends Component {
           withCredentials: true
         })
         if (deUpvoteProject.status === 200) {
-          this.loadProjects()
+          this.setState(({ upvotes, projects }) => {
+            for (let i = 0; i < upvotes.length; i++) {
+              if (upvotes[i] === id) upvotes.splice(i, 1)
+            }
+            for (const project of projects) {
+              if (project.id === id) project.upvotes = project.upvotes - 1
+            }
+            return { upvotes, projects }
+          })
         }
       } else {
         const upvoteProject = await axios({
@@ -32,11 +40,13 @@ class Projects extends Component {
           withCredentials: true
         })
         if (upvoteProject.status === 200) {
-          this.setState(({ upvotes }) => {
+          this.setState(({ upvotes, projects }) => {
             upvotes.push(id)
-            return { upvotes }
+            for (const project of projects) {
+              if (project.id === id) project.upvotes = project.upvotes + 1
+            }
+            return { upvotes, projects }
           })
-          this.loadProjects()
         }
       }
     } catch (error) {
