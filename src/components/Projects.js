@@ -111,7 +111,6 @@ class Projects extends Component {
       case 'loading':
         return <LoadingBar />
       case 'success':
-        console.log(this.state.upvotes)
         return (
           <Container p={4}>
             {projects.length < 1 ? (
