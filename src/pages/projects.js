@@ -2,16 +2,16 @@ import { Text, Container } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component } from 'react'
 
-import ErrorPage from './ErrorPage'
-import LoadingBar from './LoadingBar'
-import Project from './Project'
+import ErrorPage from '../components/ErrorPage'
+import LoadingBar from '../components/LoadingBar'
+import Project from '../components/Project'
 
 class Projects extends Component {
   state = {
+    message: '',
     projects: [],
-    upvotes: [],
     status: 'loading',
-    message: ''
+    upvotes: []
   }
 
   async loadProjects() {
