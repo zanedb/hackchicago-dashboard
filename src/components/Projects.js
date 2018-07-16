@@ -16,17 +16,16 @@ class Projects extends Component {
 
   upvoteProject = async id => {
     try {
-      console.log(this.state.upvotes) // logs an array the first time, 1 the second times
       const upvoteProject = await axios({
         method: 'post',
         url: `https://api.hackchicago.io/v1/projects/${id}/upvotes`,
         withCredentials: true
       })
       if (upvoteProject.status === 200) {
-        this.setState(prevState => ({
-          upvotes: prevState.upvotes.push(id)
-        }))
-        console.log(`state: ${this.state}`)
+        this.setState(({ upvotes }) => {
+          upvotes.push(id)
+          return { upvotes }
+        })
       }
     } catch (error) {
       console.error(error)
@@ -75,8 +74,6 @@ class Projects extends Component {
       case 'loading':
         return <LoadingBar />
       case 'success':
-        console.log(projects)
-        console.log(upvotes)
         return (
           <Container p={4}>
             {projects.length < 1 ? (
@@ -96,7 +93,7 @@ class Projects extends Component {
                   timestamp={project.timestamp}
                   upvotesCount={project.upvotes}
                   upvoteProject={this.upvoteProject}
-                  isUpvoted={upvotes.length > -1 ? true : false}
+                  isUpvoted={upvotes.includes(project.id) ? true : false}
                 />
               ))
             )}
