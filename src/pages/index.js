@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 import AddProject from './../components/AddProject'
+import EditProject from './../components/EditProject'
 import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
 import LogoutButton from './../components/LogoutButton'
@@ -12,7 +13,8 @@ import Projects from './../components/Projects'
 class App extends Component {
   state = {
     loginStatus: 'loading',
-    view: 'projects'
+    view: 'projects',
+    hasSubmitted: false
   }
 
   async componentDidMount() {
@@ -27,6 +29,11 @@ class App extends Component {
         this.setState({
           loginStatus: 'logged in'
         })
+        if (loginRequest.data.project) {
+          this.setState({
+            hasSubmitted: true
+          })
+        }
       }
     } catch (error) {
       this.setState({
@@ -38,6 +45,12 @@ class App extends Component {
   addProject = () => {
     this.setState({
       view: 'addProject'
+    })
+  }
+
+  editProject = () => {
+    this.setState({
+      view: 'editProject'
     })
   }
 
@@ -55,7 +68,7 @@ class App extends Component {
   }
 
   render() {
-    const { loginStatus, view } = this.state
+    const { loginStatus, view, hasSubmitted } = this.state
 
     switch (loginStatus) {
       case 'loading':
@@ -68,9 +81,17 @@ class App extends Component {
                 <Link to="/">Projects</Link>
               </Heading>
               {view === 'projects' ? (
-                <Button onClick={this.addProject} bg="accent" m={2} scale>
-                  Add Project
-                </Button>
+                <Fragment>
+                  {hasSubmitted ? (
+                    <Button onClick={this.editProject} bg="accent" m={2}>
+                      Edit My Project
+                    </Button>
+                  ) : (
+                    <Button onClick={this.addProject} bg="accent" m={2} scale>
+                      Add Project
+                    </Button>
+                  )}
+                </Fragment>
               ) : (
                 <Button onClick={this.showProjects} bg="accent" m={2}>
                   View Projects
@@ -80,6 +101,9 @@ class App extends Component {
             </Box>
             {view === 'projects' && <Projects />}
             {view === 'addProject' && <AddProject onEnd={this.showProjects} />}
+            {view === 'editProject' && (
+              <EditProject onEnd={this.showProjects} />
+            )}
           </Fragment>
         )
       case 'not logged in':
