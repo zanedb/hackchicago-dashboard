@@ -56,11 +56,34 @@ class Projects extends Component {
     }
   }
 
+  async loadUpvotes() {
+    try {
+      const upvoteLoad = await axios({
+        method: 'get',
+        url: 'https://api.hackchicago.io/v1/me',
+        withCredentials: true
+      })
+      if (upvoteLoad.status === 200 && upvoteLoad.data.upvotes !== null) {
+        let upvotes = []
+        for (const upvote of upvoteLoad.data.upvotes) {
+          upvotes.push(upvote.projectId)
+        }
+        this.setState({
+          upvotes
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   componentDidMount() {
     this.loadProjects()
+    this.loadUpvotes()
 
     this.refreshIntervalId = setInterval(() => {
       this.loadProjects()
+      this.loadUpvotes()
     }, 4000)
   }
 
