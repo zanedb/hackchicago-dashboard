@@ -9,6 +9,7 @@ import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
 import LogoutButton from './../components/LogoutButton'
 import Projects from './../components/Projects'
+import ErrorPage from './../components/ErrorPage'
 
 class App extends Component {
   state = {
@@ -115,6 +116,8 @@ class App extends Component {
             <LoginForm onLogin={this.showProjects} />
           </Box>
         )
+      default:
+        return <ErrorPage />
     }
   }
 }
