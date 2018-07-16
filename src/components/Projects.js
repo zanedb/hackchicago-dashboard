@@ -24,6 +24,7 @@ class Projects extends Component {
         })
         if (deUpvoteProject.status === 200) {
           this.loadUpvotes()
+          this.loadProjects()
         }
       } else {
         const upvoteProject = await axios({
@@ -37,6 +38,7 @@ class Projects extends Component {
             return { upvotes }
           })
           this.loadUpvotes()
+          this.loadProjects()
         }
       }
     } catch (error) {
