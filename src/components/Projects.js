@@ -23,7 +23,6 @@ class Projects extends Component {
           withCredentials: true
         })
         if (deUpvoteProject.status === 200) {
-          this.loadUpvotes()
           this.loadProjects()
         }
       } else {
@@ -37,7 +36,6 @@ class Projects extends Component {
             upvotes.push(id)
             return { upvotes }
           })
-          this.loadUpvotes()
           this.loadProjects()
         }
       }
@@ -65,13 +63,7 @@ class Projects extends Component {
           status: 'error'
         })
       }
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
-  async loadUpvotes() {
-    try {
       const upvoteLoad = await axios({
         method: 'get',
         url: 'https://api.hackchicago.io/v1/me',
@@ -95,11 +87,9 @@ class Projects extends Component {
 
   componentDidMount() {
     this.loadProjects()
-    this.loadUpvotes()
 
     this.refreshIntervalId = setInterval(() => {
       this.loadProjects()
-      this.loadUpvotes()
     }, 4000)
   }
 
