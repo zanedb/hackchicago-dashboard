@@ -17,8 +17,8 @@ const UpvoteButton = Button.button.extend`
   width: 72px;
   box-shadow: none !important;
 `
-
 const Project = ({
+  id,
   name,
   description,
   submitter,
@@ -26,11 +26,19 @@ const Project = ({
   tagline,
   timestamp,
   upvotesCount,
+  upvoteProject,
+  isUpvoted,
   ...props
 }) => (
   <Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
     <Flex px={1} ml={1} mr={1} align="center">
-      <UpvoteButton bg="smoke" color="slate">
+      <UpvoteButton
+        bg={isUpvoted ? 'accent' : 'smoke'}
+        color={isUpvoted ? 'white' : 'slate'}
+        onClick={() => {
+          upvoteProject(id)
+        }}
+      >
         <Icon size={20} name="arrow_upward" />
         <Text.span
           ml={1}
