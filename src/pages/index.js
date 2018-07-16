@@ -7,7 +7,6 @@ import AddProject from './../components/AddProject'
 import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
 import LogoutButton from './../components/LogoutButton'
-import NotFound from './../components/NotFound'
 import Projects from './../components/Projects'
 
 class App extends Component {
