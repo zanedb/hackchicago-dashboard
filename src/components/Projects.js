@@ -16,16 +16,28 @@ class Projects extends Component {
 
   upvoteProject = async id => {
     try {
-      const upvoteProject = await axios({
-        method: 'post',
-        url: `https://api.hackchicago.io/v1/projects/${id}/upvotes`,
-        withCredentials: true
-      })
-      if (upvoteProject.status === 200) {
-        this.setState(({ upvotes }) => {
-          upvotes.push(id)
-          return { upvotes }
+      if (this.state.upvotes.includes(id)) {
+        const deUpvoteProject = await axios({
+          method: 'delete',
+          url: `https://api.hackchicago.io/v1/projects/${id}/upvotes`,
+          withCredentials: true
         })
+        if (deUpvoteProject.status === 200) {
+          this.loadUpvotes()
+        }
+      } else {
+        const upvoteProject = await axios({
+          method: 'post',
+          url: `https://api.hackchicago.io/v1/projects/${id}/upvotes`,
+          withCredentials: true
+        })
+        if (upvoteProject.status === 200) {
+          this.setState(({ upvotes }) => {
+            upvotes.push(id)
+            return { upvotes }
+          })
+          this.loadUpvotes()
+        }
       }
     } catch (error) {
       console.error(error)
