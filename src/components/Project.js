@@ -67,9 +67,7 @@ const Project = ({
       </Buttons>
       <Box px={1} ml={1} align="left">
         <Heading m={3} mb={1}>
-          <Link href={`/project/${id}`}>
-            {name} {link !== undefined && `»`}
-          </Link>
+          <Link href={`/project/${id}`}>{name}</Link>
         </Heading>
         <Text m={3} fontSize={2} mt={1}>
           Submitted by {submitter.name}
