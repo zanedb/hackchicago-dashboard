@@ -103,7 +103,6 @@ class Project extends Component {
 
   render() {
     const { project, status, upvotes } = this.state
-    console.log(project)
     switch (status) {
       case 'loading':
         return <LoadingBar />

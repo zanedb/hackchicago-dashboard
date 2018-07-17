@@ -68,7 +68,6 @@ class EditProject extends Component {
                   },
                   withCredentials: true
                 })
-                console.log(updateProjectRequest)
                 if (updateProjectRequest.status === 200) {
                   this.props.onEnd()
                 }

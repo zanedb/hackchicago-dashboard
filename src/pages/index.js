@@ -25,7 +25,6 @@ class App extends Component {
         url: 'https://api.hackchicago.io/v1/me',
         withCredentials: true
       })
-      console.log(loginRequest)
       if (loginRequest.status === 200) {
         this.setState({
           loginStatus: 'logged in'

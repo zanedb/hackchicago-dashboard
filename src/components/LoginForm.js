@@ -68,7 +68,7 @@ class LoginForm extends Component {
                   setErrors({ token: 'An error occurred' })
                 }
               } catch (error) {
-                console.log(error)
+                console.error(error)
               }
             } else {
               try {
@@ -96,7 +96,7 @@ class LoginForm extends Component {
                   }
                 }
               } catch (error) {
-                console.log(error)
+                console.error(error)
               }
             }
           }}

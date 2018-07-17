@@ -36,7 +36,6 @@ const AddProject = props => (
             },
             withCredentials: true
           })
-          console.log(uploadProjectRequest)
           if (uploadProjectRequest.status === 200) {
             props.onEnd()
           }
