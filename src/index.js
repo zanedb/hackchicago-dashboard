@@ -13,6 +13,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" component={App} exact />
         <Route path="/project/:project_id" component={Project} exact />
+        <Route path="/projects/:project_id" component={Project} exact />
         <Route component={NotFound} />
       </Switch>
     </ThemeProvider>
