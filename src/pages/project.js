@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
-import { Container } from '@hackclub/design-system'
+import React, { Component, Fragment } from 'react'
+import { Container, Box, Heading, Button } from '@hackclub/design-system'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import ExtendedProject from './../components/ExtendedProject'
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
+import LogoutButton from './../components/LogoutButton'
 
 class Project extends Component {
   state = {
@@ -95,6 +97,10 @@ class Project extends Component {
     }
   }
 
+  returnHome() {
+    window.open('/', '_self')
+  }
+
   render() {
     const { project, status, upvotes } = this.state
     console.log(project)
@@ -103,21 +109,32 @@ class Project extends Component {
         return <LoadingBar />
       case 'loaded':
         return (
-          <Container p={4}>
-            <ExtendedProject
-              key={project.id}
-              id={project.id}
-              name={project.name}
-              link={project.link}
-              tagline={project.tagline}
-              description={project.description}
-              submitter={project.submitter}
-              timestamp={project.timestamp}
-              upvotesCount={project.upvotes}
-              upvoteProject={this.upvoteProject}
-              isUpvoted={upvotes.includes(project.id) ? true : false}
-            />
-          </Container>
+          <Fragment>
+            <Box align="center">
+              <Heading m={3}>
+                <Link to="/">Projects</Link>
+              </Heading>
+              <Button onClick={this.returnHome} bg="accent" m={2}>
+                View Projects
+              </Button>
+              <LogoutButton onLogout={this.returnHome} />
+            </Box>
+            <Container p={4}>
+              <ExtendedProject
+                key={project.id}
+                id={project.id}
+                name={project.name}
+                link={project.link}
+                tagline={project.tagline}
+                description={project.description}
+                submitter={project.submitter}
+                timestamp={project.timestamp}
+                upvotesCount={project.upvotes}
+                upvoteProject={this.upvoteProject}
+                isUpvoted={upvotes.includes(project.id) ? true : false}
+              />
+            </Container>
+          </Fragment>
         )
       case 'error':
         return <ErrorPage />
