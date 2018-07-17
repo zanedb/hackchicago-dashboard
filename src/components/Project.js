@@ -42,7 +42,7 @@ const Project = ({
         <ProjectButton
           bg={isUpvoted ? 'accent' : 'smoke'}
           color={isUpvoted ? 'white' : 'slate'}
-          mb={2}
+          mb={1}
           onClick={() => {
             upvoteProject(id)
           }}
@@ -57,7 +57,7 @@ const Project = ({
         <ProjectButton
           bg={'smoke'}
           color={'slate'}
-          mt={2}
+          mt={1}
           onClick={() => {
             window.open(link, '_blank')
           }}
