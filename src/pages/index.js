@@ -84,14 +84,23 @@ class App extends Component {
               </Heading>
               {view === 'projects' ? (
                 <Fragment>
-                  {hasSubmitted ? (
-                    <Button onClick={this.editProject} bg="accent" m={2}>
-                      Edit My Project
-                    </Button>
-                  ) : (
-                    <Button onClick={this.addProject} bg="accent" m={2} scale>
-                      Add Project
-                    </Button>
+                  {role === 'attendee' && (
+                    <Fragment>
+                      {hasSubmitted ? (
+                        <Button onClick={this.editProject} bg="accent" m={2}>
+                          Edit My Project
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={this.addProject}
+                          bg="accent"
+                          m={2}
+                          scale
+                        >
+                          Add Project
+                        </Button>
+                      )}
+                    </Fragment>
                   )}
                 </Fragment>
               ) : (
