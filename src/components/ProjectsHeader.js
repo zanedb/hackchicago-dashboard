@@ -1,5 +1,6 @@
-import { Box, Button, Heading, Link } from '@hackclub/design-system'
+import { Box, Button, Heading } from '@hackclub/design-system'
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 import LogoutButton from './../components/LogoutButton'
 
@@ -39,15 +40,13 @@ const ProjectsHeader = ({
       </Button>
     )}
     {role === 'admin' && (
-      <Button
-        onClick={() => {
-          window.location.href = '/admin'
-        }}
+      <Link
+        to="/admin"
         bg="primary"
         m={2}
       >
         Admin
-      </Button>
+      </Link>
     )}
     <LogoutButton onLogout={doLogout} />
   </Box>
