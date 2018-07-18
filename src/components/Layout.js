@@ -11,8 +11,7 @@ const Layout = ({ children }) => (
       style={{
         display: 'flex',
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center'
+        flexDirection: 'column'
       }}
     >
       {children}
