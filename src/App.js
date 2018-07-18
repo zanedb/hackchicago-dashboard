@@ -3,7 +3,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Layout from './components/Layout'
-import NotFound from './components/NotFound'
+import NotFound from './pages/404'
 import Index from './pages/index'
 import Project from './pages/project'
 import Admin from './pages/admin'
