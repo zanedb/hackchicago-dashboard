@@ -1,4 +1,4 @@
-import { Container, Field, Button } from '@hackclub/design-system'
+import { Box, Field, Button } from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
 import React from 'react'
@@ -6,7 +6,7 @@ import React from 'react'
 import Submit from './Submit'
 
 const AddProject = props => (
-  <Container p={4} maxWidth={32} {...props}>
+  <Box align="center" p={4} w={1} {...props}>
     <Formik
       initialValues={{
         name: '',
@@ -106,7 +106,7 @@ const AddProject = props => (
         </form>
       )}
     />
-  </Container>
+  </Box>
 )
 
 export default AddProject

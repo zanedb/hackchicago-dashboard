@@ -93,7 +93,6 @@ class App extends Component {
             {view === 'editProject' && (
               <EditProject onEnd={this.showProjects} />
             )}
-            <Footer />
           </Fragment>
         )
       case 'not logged in':
