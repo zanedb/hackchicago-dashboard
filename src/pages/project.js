@@ -131,7 +131,7 @@ class Project extends Component {
                 timestamp={project.timestamp}
                 upvotesCount={project.upvotes}
                 upvoteProject={this.upvoteProject}
-                isUpvoted={upvotes.includes(project.id) ? true : false}
+                isUpvoted={upvotes.includes(project.id)}
               />
             </Container>
           </Fragment>
