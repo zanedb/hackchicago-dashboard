@@ -17,7 +17,6 @@ ReactDOM.render(
           <Route path="/" component={App} exact />
           <Route path="/admin" component={Admin} exact />
           <Route path="/project/:project_id" component={Project} exact />
-          <Route path="/projects/:project_id" component={Project} exact />
           <Route component={NotFound} />
         </Switch>
       </Layout>
