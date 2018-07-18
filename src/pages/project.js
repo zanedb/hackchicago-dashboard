@@ -97,8 +97,8 @@ class Project extends Component {
     }
   }
 
-  returnHome() {
-    window.location.href = '/'
+  returnHome = () => {
+    this.props.history.push('/')
   }
 
   render() {
