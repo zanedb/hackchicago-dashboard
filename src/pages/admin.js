@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
-import Attendee from '../components/admin/Attendee'
+import AttendeeSearch from './../components/admin/AttendeeSearch'
 
 class Admin extends Component {
   state = {
@@ -75,21 +75,7 @@ class Admin extends Component {
                 Attendees
               </Text>
               <Divider />
-              {attendees.map(attendee => (
-                <Attendee
-                  key={attendee._id}
-                  fname={attendee.fname}
-                  lname={attendee.lname}
-                  id={attendee._id}
-                  phone={attendee.phone}
-                  email={attendee.email}
-                  grade={attendee.grade}
-                  school={attendee.school}
-                  city={attendee.city}
-                  state={attendee.state}
-                  isApproved={attendee.isApproved}
-                />
-              ))}
+              <AttendeeSearch attendees={attendees} />
             </Container>
           </Box>
         )
