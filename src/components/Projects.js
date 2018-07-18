@@ -1,4 +1,4 @@
-import { Text, Box } from '@hackclub/design-system'
+import { Text, Flex } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component } from 'react'
 
@@ -114,7 +114,7 @@ class Projects extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Box p={4}>
+          <Flex p={4}>
             {projects.length < 1 ? (
               <Text f={3} color="muted" py={4} align="center" bold>
                 No projects yet!
@@ -136,7 +136,7 @@ class Projects extends Component {
                 />
               ))
             )}
-          </Box>
+          </Flex>
         )
       case 'error':
         return (
