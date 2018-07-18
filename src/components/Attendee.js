@@ -55,7 +55,8 @@ const Attendee = ({
           <Link href={`/attendee/${id}`}>{`${fname} ${lname}`}</Link>
         </Heading>
         <Text m={3} fontSize={2} mt={1}>
-          <Link href={`mailto:${email}`}>{email}</Link>,{' '}
+          <Link href={`mailto:${email}`}>{email}</Link>
+          {phone !== '' && ', '}
           <Link href={`tel:${phone}`}>{phone}</Link>
         </Text>
         <Text m={3} fontSize={1}>
