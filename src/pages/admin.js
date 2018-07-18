@@ -21,6 +21,7 @@ class Admin extends Component {
         withCredentials: true
       })
       if (loadMe.status === 200 && loadMe.data.role === 'admin') {
+        this.setState({ status: 'logged in' })
         this.loadAttendees()
       } else {
         window.location.href = '/'
@@ -48,9 +49,24 @@ class Admin extends Component {
     switch (status) {
       case 'loading':
         return <LoadingBar />
+      case 'logged in':
+        return (
+          <Box align="center" p={3}>
+            <Heading m={3} fontSize={6}>
+              Admin
+            </Heading>
+            <Container>
+              <Text align="left" fontSize={5}>
+                Attendees
+              </Text>
+              <Divider />
+              <LoadingBar />
+            </Container>
+          </Box>
+        )
       case 'loaded':
         return (
-          <Box align="center">
+          <Box align="center" p={3}>
             <Heading m={3} fontSize={6}>
               Admin
             </Heading>
