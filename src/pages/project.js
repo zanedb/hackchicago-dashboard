@@ -69,9 +69,13 @@ class Project extends Component {
         })
       })
       .catch(error => {
-        this.setState({
-          status: 'invalid'
-        })
+        if (error.response.status === 401) {
+          this.props.history.push('/')
+        } else {
+          this.setState({
+            status: 'invalid'
+          })
+        }
       })
 
     const upvoteLoad = await axios({
@@ -94,7 +98,7 @@ class Project extends Component {
   }
 
   returnHome() {
-    window.open('/', '_self')
+    window.location.href = '/'
   }
 
   render() {
