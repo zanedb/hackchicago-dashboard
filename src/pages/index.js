@@ -10,7 +10,6 @@ import LoginForm from './../components/LoginForm'
 import Projects from './../components/Projects'
 import ErrorPage from './../components/ErrorPage'
 import ProjectsHeader from './../components/ProjectsHeader'
-import Footer from './../components/Footer'
 
 class App extends Component {
   state = {
