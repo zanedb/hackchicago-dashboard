@@ -6,13 +6,14 @@ import axios from 'axios'
 import ExtendedProject from './../components/ExtendedProject'
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
-import LogoutButton from './../components/LogoutButton'
+import ProjectsHeader from './../components/ProjectsHeader'
 
 class Project extends Component {
   state = {
     status: 'loading',
     project: {},
-    upvotes: []
+    upvotes: [],
+    role: ''
   }
 
   async componentDidMount() {
@@ -89,7 +90,8 @@ class Project extends Component {
           }
         }
         this.setState({
-          upvotes
+          upvotes,
+          role: upvoteLoad.data.role
         })
       }
     } catch (error) {
@@ -102,22 +104,22 @@ class Project extends Component {
   }
 
   render() {
-    const { project, status, upvotes } = this.state
+    const { project, status, upvotes, role } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar />
       case 'loaded':
         return (
           <Fragment>
-            <Box align="center">
-              <Heading m={3}>
-                <Link to="/">Projects</Link>
-              </Heading>
-              <Button onClick={this.returnHome} bg="accent" m={2}>
-                View Projects
-              </Button>
-              <LogoutButton onLogout={this.returnHome} />
-            </Box>
+            <ProjectsHeader
+              whatIsShowing="project"
+              role={role}
+              wantToViewProjects={true}
+              editProject={this.returnHome}
+              addProject={this.returnHome}
+              showProjects={this.returnHome}
+              doLogout={this.returnHome}
+            />
             <Container p={4}>
               <ExtendedProject
                 key={project.id}

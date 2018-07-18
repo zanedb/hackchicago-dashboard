@@ -7,9 +7,9 @@ import AddProject from './../components/AddProject'
 import EditProject from './../components/EditProject'
 import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
-import LogoutButton from './../components/LogoutButton'
 import Projects from './../components/Projects'
 import ErrorPage from './../components/ErrorPage'
+import ProjectsHeader from '../components/ProjectsHeader'
 
 class App extends Component {
   state = {
@@ -78,49 +78,15 @@ class App extends Component {
       case 'logged in':
         return (
           <Fragment>
-            <Box align="center">
-              <Heading m={3}>
-                <Link to="/">Projects</Link>
-              </Heading>
-              {view === 'projects' ? (
-                <Fragment>
-                  {role === 'attendee' && (
-                    <Fragment>
-                      {hasSubmitted ? (
-                        <Button onClick={this.editProject} bg="accent" m={2}>
-                          Edit My Project
-                        </Button>
-                      ) : (
-                        <Button
-                          onClick={this.addProject}
-                          bg="accent"
-                          m={2}
-                          scale
-                        >
-                          Add Project
-                        </Button>
-                      )}
-                    </Fragment>
-                  )}
-                </Fragment>
-              ) : (
-                <Button onClick={this.showProjects} bg="accent" m={2}>
-                  View Projects
-                </Button>
-              )}
-              {role === 'admin' && (
-                <Button
-                  onClick={() => {
-                    window.location.href = '/admin'
-                  }}
-                  bg="primary"
-                  m={2}
-                >
-                  Admin
-                </Button>
-              )}
-              <LogoutButton onLogout={this.doLogout} />
-            </Box>
+            <ProjectsHeader
+              whatIsShowing={view}
+              role={role}
+              wantToViewProjects={!hasSubmitted}
+              editProject={this.editProject}
+              addProject={this.addProject}
+              showProjects={this.showProjects}
+              doLogout={this.doLogout}
+            />
             {view === 'projects' && <Projects />}
             {view === 'addProject' && <AddProject onEnd={this.showProjects} />}
             {view === 'editProject' && (
