@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from '@hackclub/design-system'
+import { Box, Heading } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'

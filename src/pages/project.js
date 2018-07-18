@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Container, Box, Heading, Button } from '@hackclub/design-system'
-import { Link } from 'react-router-dom'
+import { Container } from '@hackclub/design-system'
 import axios from 'axios'
 
 import ExtendedProject from './../components/ExtendedProject'
