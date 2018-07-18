@@ -39,16 +39,12 @@ const Project = ({
   <Box key={id} p={3} width={[1 / 2, 1 / 3]}>
     <Link href={`/project/${id}`}>
       <Card boxShadowSize="sm">
-        <Image
-          src="https://hackchicago.io/img/brand/logo-blue.svg"
-          width="512"
-          height="256"
-        />
+        <Image src="http://placehold.it/512x256" width="512" height="256" />
         <Box p={2}>
-          <Heading fontSize={2} bold>
+          <Heading fontSize={5} bold>
             {name}
           </Heading>
-          <Text fontSize={1} color="slate">
+          <Text fontSize={2} color="slate">
             {tagline}
           </Text>
         </Box>
