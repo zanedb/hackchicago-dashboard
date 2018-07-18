@@ -63,12 +63,12 @@ class LoginForm extends Component {
                     loginCodeSent: true
                   })
                 } else if (generateTokenRequest.status === 401) {
-                  setErrors({ token: 'Invalid email address' })
+                  setErrors({ email: 'Invalid email address' })
                 } else {
-                  setErrors({ token: 'An error occurred' })
+                  setErrors({ email: 'An error occurred' })
                 }
               } catch (error) {
-                console.error(error)
+                setErrors({ token: 'Could not authenticate' })
               }
             } else {
               try {
@@ -96,7 +96,9 @@ class LoginForm extends Component {
                   }
                 }
               } catch (error) {
-                console.error(error)
+                setErrors({
+                  token: 'Authentication failed, are the email + token correct?'
+                })
               }
             }
           }}
