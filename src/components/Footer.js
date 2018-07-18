@@ -13,7 +13,11 @@ const Base = Flex.withComponent('footer').extend.attrs({
 const Footer = () => (
   <Base>
     <Text align="center" f={3}>
-      Made with ❤️ for{' '}
+      Made with{' '}
+      <span role="img" aria-label="heart">
+        ❤️
+      </span>{' '}
+      for{' '}
       <Link href="https://hackchicago.io" target="_blank">
         Hack Chicago 2018
       </Link>
