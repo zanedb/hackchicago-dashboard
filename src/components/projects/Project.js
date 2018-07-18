@@ -5,11 +5,11 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
   Icon,
   Text
 } from '@hackclub/design-system'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ProjectButton = Button.button.extend`
   display: inline-flex;
@@ -34,11 +34,11 @@ const Project = ({
 }) => (
   <Box key={id} p={3} width={[1 / 2, 1 / 3]}>
     <Card boxShadowSize="sm">
-      <Link href={`/project/${id}`}>
+      <Link to={`/project/${id}`}>
         <Image src="http://placehold.it/512x256" w={1} />
       </Link>
       <Flex>
-        <Link href={`/project/${id}`}>
+        <Link to={`/project/${id}`}>
           <Box align="left" p={2}>
             <Heading fontSize={5} bold>
               {name}
