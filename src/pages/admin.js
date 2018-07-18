@@ -77,6 +77,7 @@ class Admin extends Component {
               <Divider />
               {attendees.map(attendee => (
                 <Attendee
+                  key={attendee.id}
                   fname={attendee.fname}
                   lname={attendee.lname}
                   id={attendee.id}
