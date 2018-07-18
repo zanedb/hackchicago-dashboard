@@ -114,7 +114,7 @@ class Projects extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Flex p={4}>
+          <Flex p={4} wrap>
             {projects.length < 1 ? (
               <Text f={3} color="muted" py={4} align="center" bold>
                 No projects yet!
