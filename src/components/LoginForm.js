@@ -18,7 +18,7 @@ class LoginForm extends Component {
   render() {
     const { loginCodeSent } = this.state
     return (
-      <Container p={4} maxWidth={32}>
+      <Container maxWidth={32}>
         <Formik
           initialValues={{
             email: '',
@@ -112,7 +112,7 @@ class LoginForm extends Component {
             <form onSubmit={handleSubmit}>
               {loginCodeSent === true ? (
                 <div>
-                  <Text f={3} color="accent" py={4} bold>
+                  <Text f={3} color="accent" py={2} bold>
                     Please check your email, and enter the token.
                   </Text>
                   <Field
@@ -144,6 +144,7 @@ class LoginForm extends Component {
                 bg="accent"
                 scale={true}
                 value="Submit"
+                m={2}
               />
             </form>
           )}
