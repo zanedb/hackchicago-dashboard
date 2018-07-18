@@ -24,10 +24,10 @@ class Admin extends Component {
         this.setState({ status: 'logged in' })
         this.loadAttendees()
       } else {
-        window.location.href = '/'
+        this.props.history.push('/')
       }
     } catch (error) {
-      window.location.href = '/'
+      this.props.history.push('/')
     }
   }
 

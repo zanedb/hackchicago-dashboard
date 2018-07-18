@@ -41,7 +41,7 @@ const ProjectsHeader = ({
     {role === 'admin' && (
       <Button
         onClick={() => {
-          window.location.href = '/admin'
+          this.props.history.push('/admin')
         }}
         bg="primary"
         m={2}
