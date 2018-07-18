@@ -40,11 +40,7 @@ const ProjectsHeader = ({
       </Button>
     )}
     {role === 'admin' && (
-      <Link
-        to="/admin"
-        bg="primary"
-        m={2}
-      >
+      <Link to="/admin" bg="primary" m={2}>
         Admin
       </Link>
     )}

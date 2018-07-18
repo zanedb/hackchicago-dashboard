@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Box, Heading, Divider, Container, Text } from '@hackclub/design-system'
 import axios from 'axios'
 
