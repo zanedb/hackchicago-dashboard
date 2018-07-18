@@ -35,7 +35,7 @@ const Project = ({
   <Box key={id} p={3} width={[1 / 2, 1 / 3]}>
     <Card boxShadowSize="sm">
       <Link to={`/project/${id}`}>
-        <Image src="http://placehold.it/512x256" w={1} />
+        <Image src="http://placehold.it/512x256" w={1} alt={name} />
       </Link>
       <Flex>
         <Link to={`/project/${id}`}>
