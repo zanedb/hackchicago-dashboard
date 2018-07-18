@@ -1,4 +1,4 @@
-import { Text, Flex } from '@hackclub/design-system'
+import { Container, Flex, Text } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component } from 'react'
 
@@ -114,29 +114,31 @@ class Projects extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Flex p={4} wrap>
-            {projects.length < 1 ? (
-              <Text f={3} color="muted" py={4} align="center" bold>
-                No projects yet!
-              </Text>
-            ) : (
-              projects.map(project => (
-                <Project
-                  key={project.id}
-                  id={project.id}
-                  name={project.name}
-                  link={project.link}
-                  tagline={project.tagline}
-                  description={project.description}
-                  submitter={project.submitter}
-                  timestamp={project.timestamp}
-                  upvotesCount={project.upvotes}
-                  upvoteProject={this.upvoteProject}
-                  isUpvoted={upvotes.includes(project.id) ? true : false}
-                />
-              ))
-            )}
-          </Flex>
+          <Container>
+            <Flex p={4} wrap>
+              {projects.length < 1 ? (
+                <Text f={3} color="muted" py={4} align="center" bold>
+                  No projects yet!
+                </Text>
+              ) : (
+                projects.map(project => (
+                  <Project
+                    key={project.id}
+                    id={project.id}
+                    name={project.name}
+                    link={project.link}
+                    tagline={project.tagline}
+                    description={project.description}
+                    submitter={project.submitter}
+                    timestamp={project.timestamp}
+                    upvotesCount={project.upvotes}
+                    upvoteProject={this.upvoteProject}
+                    isUpvoted={upvotes.includes(project.id) ? true : false}
+                  />
+                ))
+              )}
+            </Flex>
+          </Container>
         )
       case 'error':
         return (
