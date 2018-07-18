@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Box, Heading, Divider, Container, Text } from '@hackclub/design-system'
 import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
+import Attendee from '../components/Attendee'
 
 class Admin extends Component {
   state = {
@@ -34,7 +36,31 @@ class Admin extends Component {
       case 'loading':
         return <LoadingBar />
       case 'logged in':
-        return <p>You are an Admin.</p>
+        return (
+          <Box align="center">
+            <Heading m={3} fontSize={6}>
+              Admin
+            </Heading>
+            <Container>
+              <Text align="left" fontSize={5}>
+                Attendees
+              </Text>
+              <Divider />
+              <Attendee
+                fname="First"
+                lname="Last"
+                id="a"
+                phone="1234567890"
+                email="email@email.com"
+                grade={8}
+                school="School"
+                city="San Francisco"
+                state="California"
+                isApproved={true}
+              />
+            </Container>
+          </Box>
+        )
       default:
         return <ErrorPage />
     }
