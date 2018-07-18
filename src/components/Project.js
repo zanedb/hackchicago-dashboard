@@ -39,7 +39,7 @@ const Project = ({
       </Link>
       <Flex>
         <Link href={`/project/${id}`}>
-          <Box p={2}>
+          <Box align="left" p={2}>
             <Heading fontSize={5} bold>
               {name}
             </Heading>
