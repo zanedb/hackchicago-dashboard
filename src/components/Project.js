@@ -4,7 +4,7 @@ import {
   Card,
   Flex,
   Heading,
-  Icon,
+  Image,
   Link,
   Text
 } from '@hackclub/design-system'
@@ -36,7 +36,27 @@ const Project = ({
   isUpvoted,
   ...props
 }) => (
-  <Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
+  <Box key={id} p={3} width={[1 / 2, 1 / 3]}>
+    <Link href={`/project/${id}`}>
+      <Card boxShadowSize="sm">
+        <Image
+          src="https://hackchicago.io/img/brand/logo-blue.svg"
+          width="512"
+          height="256"
+        />
+        <Box p={2}>
+          <Heading fontSize={2} bold>
+            {name}
+          </Heading>
+          <Text fontSize={1} color="slate">
+            {tagline}
+          </Text>
+        </Box>
+      </Card>
+    </Link>
+  </Box>
+)
+/*<Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
     <Flex px={1} ml={1} mr={1} align="center">
       <Buttons ml={1} mr={1}>
         <ProjectButton
@@ -78,6 +98,6 @@ const Project = ({
       </Box>
     </Flex>
   </Card>
-)
+*/
 
 export default Project
