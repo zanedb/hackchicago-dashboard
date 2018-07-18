@@ -15,6 +15,7 @@ class App extends Component {
   state = {
     loginStatus: 'loading',
     view: 'projects',
+    role: '',
     hasSubmitted: false
   }
 
@@ -27,7 +28,8 @@ class App extends Component {
       })
       if (loginRequest.status === 200) {
         this.setState({
-          loginStatus: 'logged in'
+          loginStatus: 'logged in',
+          role: loginRequest.data.role
         })
         if (loginRequest.data.project) {
           this.setState({
@@ -68,7 +70,7 @@ class App extends Component {
   }
 
   render() {
-    const { loginStatus, view, hasSubmitted } = this.state
+    const { loginStatus, view, role, hasSubmitted } = this.state
 
     switch (loginStatus) {
       case 'loading':
@@ -95,6 +97,17 @@ class App extends Component {
               ) : (
                 <Button onClick={this.showProjects} bg="accent" m={2}>
                   View Projects
+                </Button>
+              )}
+              {role === 'admin' && (
+                <Button
+                  onClick={() => {
+                    window.location.href = '/admin'
+                  }}
+                  bg="primary"
+                  m={2}
+                >
+                  Admin
                 </Button>
               )}
               <LogoutButton onLogout={this.doLogout} />

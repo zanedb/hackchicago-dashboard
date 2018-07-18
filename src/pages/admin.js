@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'
+import ErrorPage from './../components/ErrorPage'
 
 class Admin extends Component {
   state = {
@@ -34,6 +35,8 @@ class Admin extends Component {
         return <LoadingBar />
       case 'logged in':
         return <p>You are an Admin.</p>
+      default:
+        return <ErrorPage />
     }
   }
 }
