@@ -43,8 +43,9 @@ const Attendee = ({
           bg={isApproved ? 'accent' : 'smoke'}
           color={isApproved ? 'white' : 'slate'}
           mb={1}
+          aria-label={isApproved ? 'Approved' : 'Not approved'}
         >
-          <Icon size={20} name="arrow_upward" />
+          <Icon size={20} name="check" />
         </ProjectButton>
         <ProjectButton bg={'smoke'} color={'slate'} mt={1}>
           <Icon size={20} name="open_in_new" />

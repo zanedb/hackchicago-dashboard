@@ -24,10 +24,10 @@ class Admin extends Component {
         this.setState({ status: 'logged in' })
         this.loadAttendees()
       } else {
-        window.location.href = '/'
+        this.props.history.push('/')
       }
     } catch (error) {
-      window.location.href = '/'
+      this.props.history.push('/')
     }
   }
 
@@ -77,6 +77,7 @@ class Admin extends Component {
               <Divider />
               {attendees.map(attendee => (
                 <Attendee
+                  key={attendee.id}
                   fname={attendee.fname}
                   lname={attendee.lname}
                   id={attendee.id}
