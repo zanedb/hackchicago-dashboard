@@ -3,13 +3,13 @@ import axios from 'axios'
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
-import AddProject from './../components/AddProject'
-import EditProject from './../components/EditProject'
+import AddProject from './../components/projects/AddProject'
+import EditProject from './../components/projects/EditProject'
 import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
-import Projects from './../components/Projects'
+import Projects from './../components/projects/Projects'
 import ErrorPage from './../components/ErrorPage'
-import ProjectsHeader from './../components/ProjectsHeader'
+import ProjectsHeader from './../components/projects/ProjectsHeader'
 
 class App extends Component {
   state = {

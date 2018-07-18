@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { Container } from '@hackclub/design-system'
 import axios from 'axios'
 
-import ExtendedProject from './../components/ExtendedProject'
+import ExtendedProject from './../components/projects/ExtendedProject'
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
-import ProjectsHeader from './../components/ProjectsHeader'
+import ProjectsHeader from './../components/projects/ProjectsHeader'
 
 class Project extends Component {
   state = {

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
-import Attendee from '../components/Attendee'
+import Attendee from '../components/admin/Attendee'
 
 class Admin extends Component {
   state = {

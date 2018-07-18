@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Formik } from 'formik'
 import React from 'react'
 
-import Submit from './Submit'
+import Submit from './../Submit'
 
 const AddProject = props => (
   <Box align="center" p={4} w={1} {...props}>

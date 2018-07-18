@@ -1,7 +1,7 @@
 import { Box, Button, Heading, Link } from '@hackclub/design-system'
 import React, { Fragment } from 'react'
 
-import LogoutButton from './../components/LogoutButton'
+import LogoutButton from './../LogoutButton'
 
 const ProjectsHeader = ({
   whatIsShowing,

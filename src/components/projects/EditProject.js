@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Formik } from 'formik'
 
-import Submit from './Submit'
-import LoadingBar from './LoadingBar'
+import Submit from './../Submit'
+import LoadingBar from './../LoadingBar'
 
 class EditProject extends Component {
   state = {
