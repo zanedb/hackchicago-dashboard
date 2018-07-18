@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Container } from '@hackclub/design-system'
+import { Container, Text, Box } from '@hackclub/design-system'
 import axios from 'axios'
 
 import ExtendedProject from './../components/projects/ExtendedProject'
@@ -57,44 +57,39 @@ class Project extends Component {
 
   async loadProject() {
     const { match } = this.props
-    try {
-      const projectLoad = await axios({
-        method: 'get',
-        url: `https://api.hackchicago.io/v1/projects/${
-          match.params.project_id
-        }`,
-        withCredentials: true
-      })
-      if (projectLoad.status === 200) {
+    axios
+      .get(
+        `https://api.hackchicago.io/v1/projects/${match.params.project_id}`,
+        { withCredentials: true }
+      )
+      .then(res => {
         this.setState({
           status: 'loaded',
-          project: projectLoad.data
+          project: res.data
         })
-      } else {
-        this.setState({
-          status: 'error'
-        })
-      }
-
-      const upvoteLoad = await axios({
-        method: 'get',
-        url: 'https://api.hackchicago.io/v1/me',
-        withCredentials: true
       })
-      if (upvoteLoad.status === 200) {
-        let upvotes = []
-        if (upvoteLoad.data.upvotes !== undefined) {
-          for (const upvote of upvoteLoad.data.upvotes) {
-            upvotes.push(upvote.projectId)
-          }
-        }
+      .catch(error => {
         this.setState({
-          upvotes,
-          role: upvoteLoad.data.role
+          status: 'invalid'
         })
+      })
+
+    const upvoteLoad = await axios({
+      method: 'get',
+      url: 'https://api.hackchicago.io/v1/me',
+      withCredentials: true
+    })
+    if (upvoteLoad.status === 200) {
+      let upvotes = []
+      if (upvoteLoad.data.upvotes !== undefined) {
+        for (const upvote of upvoteLoad.data.upvotes) {
+          upvotes.push(upvote.projectId)
+        }
       }
-    } catch (error) {
-      console.error(error)
+      this.setState({
+        upvotes,
+        role: upvoteLoad.data.role
+      })
     }
   }
 
@@ -136,8 +131,21 @@ class Project extends Component {
             </Container>
           </Fragment>
         )
-      case 'error':
-        return <ErrorPage />
+      case 'invalid':
+        return (
+          <Box
+            style={{
+              display: 'flex',
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}
+          >
+            <Text color="error" fontSize={5} p={3}>
+              404: Project Not Found
+            </Text>
+          </Box>
+        )
       default:
         return <ErrorPage />
     }
