@@ -40,8 +40,10 @@ const ProjectsHeader = ({
       </Button>
     )}
     {role === 'admin' && (
-      <Link to="/admin" bg="primary" m={2}>
-        Admin
+      <Link to="/admin">
+        <Button bg="primary" m={2}>
+          Admin
+        </Button>
       </Link>
     )}
     <LogoutButton onLogout={doLogout} />
