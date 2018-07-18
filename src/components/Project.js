@@ -6,6 +6,7 @@ import {
   Heading,
   Image,
   Link,
+  Icon,
   Text
 } from '@hackclub/design-system'
 import React from 'react'
@@ -37,19 +38,40 @@ const Project = ({
   ...props
 }) => (
   <Box key={id} p={3} width={[1 / 2, 1 / 3]}>
-    <Link href={`/project/${id}`}>
-      <Card boxShadowSize="sm">
+    <Card boxShadowSize="sm">
+      <Link href={`/project/${id}`}>
         <Image src="http://placehold.it/512x256" width="512" height="256" />
-        <Box p={2}>
-          <Heading fontSize={5} bold>
-            {name}
-          </Heading>
-          <Text fontSize={2} color="slate">
-            {tagline}
-          </Text>
-        </Box>
-      </Card>
-    </Link>
+      </Link>
+      <Flex>
+        <Link href={`/project/${id}`}>
+          <Box p={2}>
+            <Heading fontSize={5} bold>
+              {name}
+            </Heading>
+            <Text fontSize={2} color="slate">
+              {tagline}
+            </Text>
+          </Box>
+        </Link>
+        <Flex ml="auto" mr={2} align="center" px={1}>
+          <ProjectButton
+            bg={isUpvoted ? 'accent' : 'smoke'}
+            color={isUpvoted ? 'white' : 'slate'}
+            mb={1}
+            onClick={() => {
+              upvoteProject(id)
+            }}
+          >
+            <Icon size={20} name="arrow_upward" />
+            <Text.span
+              ml={1}
+              f={2}
+              children={upvotesCount === undefined ? '0' : upvotesCount}
+            />
+          </ProjectButton>
+        </Flex>
+      </Flex>
+    </Card>
   </Box>
 )
 /*<Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
