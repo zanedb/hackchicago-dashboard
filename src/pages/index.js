@@ -9,7 +9,8 @@ import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
 import Projects from './../components/Projects'
 import ErrorPage from './../components/ErrorPage'
-import ProjectsHeader from '../components/ProjectsHeader'
+import ProjectsHeader from './../components/ProjectsHeader'
+import Footer from './../components/Footer'
 
 class App extends Component {
   state = {
@@ -92,6 +93,7 @@ class App extends Component {
             {view === 'editProject' && (
               <EditProject onEnd={this.showProjects} />
             )}
+            <Footer />
           </Fragment>
         )
       case 'not logged in':
