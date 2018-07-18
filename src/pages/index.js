@@ -11,7 +11,7 @@ import Projects from './../components/project/Projects'
 import ErrorPage from './../components/ErrorPage'
 import ProjectsHeader from './../components/project/ProjectsHeader'
 
-class App extends Component {
+class Index extends Component {
   state = {
     loginStatus: 'loading',
     view: 'projects',
@@ -109,4 +109,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Index
