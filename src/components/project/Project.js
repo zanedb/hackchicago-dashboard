@@ -47,7 +47,7 @@ const Project = ({
 }) => (
   <Base boxShadowSize="sm">
     <Link to={`/project/${id}`}>
-      <Image src="http://placehold.it/512x256" width={1} alt={name} />
+      <Image src="https://placehold.it/512x256" width={1} alt={name} />
     </Link>
     <Flex p={3}>
       <Link to={`/project/${id}`}>
