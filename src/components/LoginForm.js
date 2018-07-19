@@ -120,7 +120,7 @@ class LoginForm extends Component {
                 <Field
                   type="text"
                   name="token"
-                  placeholder="012345"
+                  placeholder="123456"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.token}
