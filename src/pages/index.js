@@ -113,12 +113,11 @@ class Index extends Component {
         )
       case 'not logged in':
         return (
-          <Container maxWidth={32} align='left'>
-            <Heading.h1 mt={4}>
-              Welcome!
-            </Heading.h1>
-            <Text color='slate' f={4} my={3}>
-              We can’t wait to see what you’ve built! Enter your email to sign in below.
+          <Container maxWidth={32} align="left">
+            <Heading.h1 mt={4}>Welcome!</Heading.h1>
+            <Text color="slate" f={4} my={3}>
+              We can’t wait to see what you’ve built! Enter your email to sign
+              in below.
             </Text>
             <LoginForm onLogin={this.checkLogin} />
             <Jumbotron />

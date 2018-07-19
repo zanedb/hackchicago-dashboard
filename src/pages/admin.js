@@ -76,7 +76,13 @@ class Admin extends Component {
       case 'loaded':
         return (
           <Container align="center">
-            <Header whatIsShowing="admin" role="admin" showProjects={() => { this.props.history.push('/') }} />
+            <Header
+              whatIsShowing="admin"
+              role="admin"
+              showProjects={() => {
+                this.props.history.push('/')
+              }}
+            />
             <FlexHeading fontSize={5} mb={3}>
               Attendees
               <Badge bg="smoke" color="slate" ml={['auto', 2]}>
