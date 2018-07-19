@@ -20,6 +20,22 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    this.checkLogin()
+  }
+
+  addProject = () => {
+    this.setState({
+      view: 'addProject'
+    })
+  }
+
+  editProject = () => {
+    this.setState({
+      view: 'editProject'
+    })
+  }
+
+  checkLogin = () => {
     axios
       .get('https://api.hackchicago.io/v1/me', { withCredentials: true })
       .then(res => {
@@ -38,18 +54,6 @@ class Index extends Component {
           loginStatus: 'not logged in'
         })
       })
-  }
-
-  addProject = () => {
-    this.setState({
-      view: 'addProject'
-    })
-  }
-
-  editProject = () => {
-    this.setState({
-      view: 'editProject'
-    })
   }
 
   showProjects = () => {
@@ -96,7 +100,7 @@ class Index extends Component {
             <Heading m={3}>
               <Link to="/">Login</Link>
             </Heading>
-            <LoginForm onLogin={this.showProjects} />
+            <LoginForm onLogin={this.checkLogin} />
           </Box>
         )
       default:
