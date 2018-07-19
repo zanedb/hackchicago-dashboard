@@ -62,12 +62,12 @@ class LoginForm extends Component {
                   loginCodeSent: true
                 })
               } else if (generateTokenRequest.status === 401) {
-                setErrors({ email: 'Invalid email address' })
+                setErrors({ general: 'Invalid email address' })
               } else {
-                setErrors({ email: 'An error occurred' })
+                setErrors({ general: 'An error occurred' })
               }
             } catch (error) {
-              setErrors({ token: 'Could not authenticate' })
+              setErrors({ general: 'Could not authenticate' })
             }
           } else {
             try {
@@ -89,15 +89,15 @@ class LoginForm extends Component {
               } else {
                 setSubmitting(false)
                 if (loginWithTokenRequest.status === 401) {
-                  setErrors({ token: 'Invalid email or token' })
+                  setErrors({ general: 'Invalid email or token' })
                 } else {
-                  setErrors({ token: 'An error occurred' })
+                  setErrors({ general: 'An error occurred' })
                 }
               }
             } catch (error) {
               setSubmitting(false)
               setErrors({
-                token: 'Authentication failed, are the email + token correct?'
+                general: 'Authentication failed, are the email + token correct?'
               })
             }
           }
@@ -139,6 +139,9 @@ class LoginForm extends Component {
                 label="Email"
                 error={errors.email}
               />
+            )}
+            {errors.general && (
+              <Text color="error">{errors.general}</Text>
             )}
             <Submit
               onClick={this.handleSubmit}

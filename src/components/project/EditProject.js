@@ -74,7 +74,7 @@ class EditProject extends Component {
                   this.props.onEnd()
                 }
               } catch (error) {
-                setErrors({ name: 'An error occurred' })
+                setErrors({ general: 'An error occurred' })
               }
             }}
             render={({
@@ -126,8 +126,8 @@ class EditProject extends Component {
                   error={errors.description}
                   label="Description"
                 />
-                {errors.unedited && (
-                  <Text color="error">{errors.unedited}</Text>
+                {errors.general && (
+                  <Text color="error">{errors.general}</Text>
                 )}
                 <Submit
                   disabled={isSubmitting}
