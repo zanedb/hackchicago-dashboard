@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { Box, Heading, Divider, Container, Text } from '@hackclub/design-system'
+import {
+  Box,
+  Heading,
+  Divider,
+  Container,
+  Text,
+  Badge
+} from '@hackclub/design-system'
 import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'
@@ -72,7 +79,10 @@ class Admin extends Component {
             </Heading>
             <Container>
               <Text align="left" fontSize={5}>
-                Attendees
+                Attendees{' '}
+                <Badge bg="smoke" color="slate">
+                  {attendees.length}
+                </Badge>
               </Text>
               <Divider />
               <AttendeeSearch attendees={attendees} />
