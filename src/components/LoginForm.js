@@ -140,9 +140,7 @@ class LoginForm extends Component {
                 error={errors.email}
               />
             )}
-            {errors.general && (
-              <Text color="error">{errors.general}</Text>
-            )}
+            {errors.general && <Text color="error">{errors.general}</Text>}
             <Submit
               onClick={this.handleSubmit}
               disabled={isSubmitting}

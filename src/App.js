@@ -25,8 +25,8 @@ const grays = {
 
 const brand = {
   primary: blue,
-  important: palette.red[5],
-  accent: palette.fuschia[5],
+  important: palette.red[8],
+  accent: palette.fuschia[7],
   success: palette.teal[5],
   info: palette.blue[5],
   warning: palette.orange[5],

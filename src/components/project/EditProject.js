@@ -126,9 +126,7 @@ class EditProject extends Component {
                   error={errors.description}
                   label="Description"
                 />
-                {errors.general && (
-                  <Text color="error">{errors.general}</Text>
-                )}
+                {errors.general && <Text color="error">{errors.general}</Text>}
                 <Submit
                   disabled={isSubmitting}
                   bg="accent"
