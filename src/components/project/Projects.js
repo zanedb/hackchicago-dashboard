@@ -55,44 +55,36 @@ class Projects extends Component {
   }
 
   async loadProjects() {
-    try {
-      const projectLoad = await axios({
-        method: 'get',
-        url: 'https://api.hackchicago.io/v1/projects',
-        withCredentials: true
-      })
-      if (projectLoad.status === 200) {
+    axios
+      .get('https://api.hackchicago.io/v1/projects', { withCredentials: true })
+      .then(res => {
         this.setState({
-          projects: projectLoad.data,
+          projects: res.data,
           status: 'success',
-          message: projectLoad.statusText
+          message: res.statusText
         })
-      } else {
+      })
+      .catch(err => {
         this.setState({
-          message: projectLoad.statusText,
+          message:
+            'Authentication failed. Make sure third-party cookies are enabled.',
           status: 'error'
         })
-      }
-
-      const upvoteLoad = await axios({
-        method: 'get',
-        url: 'https://api.hackchicago.io/v1/me',
-        withCredentials: true
       })
-      if (upvoteLoad.status === 200) {
+
+    axios
+      .get('https://api.hackchicago.io/v1/me', { withCredentials: true })
+      .then(res => {
         let upvotes = []
-        if (upvoteLoad.data.upvotes !== undefined) {
-          for (const upvote of upvoteLoad.data.upvotes) {
+        if (res.data.upvotes !== undefined) {
+          for (const upvote of res.data.upvotes) {
             upvotes.push(upvote.projectId)
           }
         }
         this.setState({
           upvotes
         })
-      }
-    } catch (error) {
-      console.error(error)
-    }
+      })
   }
 
   componentDidMount() {
