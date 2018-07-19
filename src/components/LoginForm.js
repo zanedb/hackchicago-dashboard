@@ -18,7 +18,7 @@ class LoginForm extends Component {
   render() {
     const { loginCodeSent } = this.state
     return (
-      <Container maxWidth={32}>
+      <Container maxWidth={32} p={3}>
         <Formik
           initialValues={{
             email: '',
