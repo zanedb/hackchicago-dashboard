@@ -96,6 +96,7 @@ class LoginForm extends Component {
                   }
                 }
               } catch (error) {
+                setSubmitting(false)
                 setErrors({
                   token: 'Authentication failed, are the email + token correct?'
                 })
