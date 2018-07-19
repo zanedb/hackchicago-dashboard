@@ -44,8 +44,8 @@ class ExtendedProject extends Component {
       parentPhone
     } = this.props
     return (
-      <Container>
-        <FlexHeading fontSize={5} mb={2}>
+      <Container align="left">
+        <FlexHeading fontSize={6} mb={2}>
           {fname} {lname}
           <Badge
             bg={role === 'admin' ? 'important' : 'smoke'}
@@ -55,10 +55,10 @@ class ExtendedProject extends Component {
             {role}
           </Badge>
         </FlexHeading>
-        <Heading f={4} mb={3} align="left">
+        <Heading f={4} mb={3}>
           {grade}th Grader at {school} in {city}, {state}
         </Heading>
-        <Text f={4} align="left">
+        <Text f={4}>
           Email: <Link href={`mailto:${email}`}>{email}</Link>
           {phone !== '' && (
             <Fragment>
@@ -66,16 +66,27 @@ class ExtendedProject extends Component {
             </Fragment>
           )}
         </Text>
-        <Heading.h2 f={5} my={3} align="left">
+        <Heading.h2 f={5} my={3}>
           Parent/Guardian
         </Heading.h2>
-        <Text f={4} align="left">
+        <Text f={4}>
           Name: {parentName}
           <br />
           Email: <Link href={`mailto:${parentEmail}`}>{parentEmail}</Link>
           <br />
           Phone: <Link href={`tel:${parentPhone}`}>{parentPhone}</Link>
         </Text>
+        <Flex mt={4}>
+          <Button bg="primary" mr={1}>
+            Edit Attendee
+          </Button>
+          <Button bg="important" mr={1}>
+            Delete Attendee
+          </Button>
+          <Button bg="accent" inverted={true}>
+            Cancel
+          </Button>
+        </Flex>
       </Container>
     )
   }
