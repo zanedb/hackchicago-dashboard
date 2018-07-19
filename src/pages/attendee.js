@@ -75,6 +75,9 @@ class Project extends Component {
                 city={attendee.city}
                 state={attendee.state}
                 isApproved={attendee.isApproved}
+                parentName={attendee.parentName}
+                parentEmail={attendee.parentEmail}
+                parentPhone={attendee.parentPhone}
               />
             </Container>
           </Fragment>

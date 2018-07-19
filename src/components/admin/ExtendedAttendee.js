@@ -1,14 +1,13 @@
 import {
-  Box,
+  Badge,
   Button,
-  Card,
   Flex,
   Heading,
-  Icon,
   Link,
-  Text
+  Text,
+  Container
 } from '@hackclub/design-system'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 const ProjectButton = Button.button.extend`
   display: inline-flex;
@@ -20,6 +19,10 @@ const ProjectButton = Button.button.extend`
 const Buttons = Flex.extend`
   display: flex;
   flex-flow: column;
+`
+const FlexHeading = Flex.withComponent(Heading.h2).extend`
+  align-items: center;
+  text-align: left;
 `
 
 class ExtendedProject extends Component {
@@ -35,35 +38,45 @@ class ExtendedProject extends Component {
       school,
       city,
       state,
-      isApproved
+      isApproved,
+      parentEmail,
+      parentName,
+      parentPhone
     } = this.props
     return (
-      <Card boxShadowSize="sm" my={3} p={3} color="black" bg="white">
-        <Flex px={1} ml={1} mr={1} align="center">
-          <Buttons ml={1} mr={1}>
-            <ProjectButton
-              bg={isApproved ? 'success' : 'smoke'}
-              color={isApproved ? 'white' : 'slate'}
-              mb={2}
-            >
-              <Icon size={20} name={isApproved ? 'check' : 'cancel'} />
-            </ProjectButton>
-          </Buttons>
-          <Box px={1} ml={1} align="left">
-            <Heading m={3} mb={1}>
-              {fname} {lname}
-            </Heading>
-            <Text m={3} fontSize={4} mt={1} mb={1}>
-              {grade}th Grader at {school} in {city}, {state}
-            </Text>
-            <Text m={3} fontSize={3} mt={1}>
-              <Link href={`mailto:${email}`}>{email}</Link>
-              {phone !== '' && ', '}
-              <Link href={`tel:${phone}`}>{phone}</Link>
-            </Text>
-          </Box>
-        </Flex>
-      </Card>
+      <Container>
+        <FlexHeading fontSize={5} mb={2}>
+          {fname} {lname}
+          <Badge
+            bg={role === 'admin' ? 'important' : 'smoke'}
+            color={role === 'admin' ? 'white' : 'slate'}
+            ml={['auto', 2]}
+          >
+            {role}
+          </Badge>
+        </FlexHeading>
+        <Heading f={4} mb={3} align="left">
+          {grade}th Grader at {school} in {city}, {state}
+        </Heading>
+        <Text f={4} align="left">
+          Email: <Link href={`mailto:${email}`}>{email}</Link>
+          {phone !== '' && (
+            <Fragment>
+              <br />Phone: <Link href={`tel:${phone}`}>{phone}</Link>
+            </Fragment>
+          )}
+        </Text>
+        <Heading.h2 f={5} my={3} align="left">
+          Parent/Guardian
+        </Heading.h2>
+        <Text f={4} align="left">
+          Name: {parentName}
+          <br />
+          Email: <Link href={`mailto:${parentEmail}`}>{parentEmail}</Link>
+          <br />
+          Phone: <Link href={`tel:${parentPhone}`}>{parentPhone}</Link>
+        </Text>
+      </Container>
     )
   }
 }
