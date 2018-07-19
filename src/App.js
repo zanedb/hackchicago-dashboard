@@ -1,5 +1,6 @@
-import { ThemeProvider } from '@hackclub/design-system'
+import { ThemeProvider, theme } from '@hackclub/design-system'
 import React from 'react'
+import palx from 'palx'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Layout from './components/Layout'
@@ -8,9 +9,42 @@ import Index from './pages/index'
 import Project from './pages/project'
 import Admin from './pages/admin'
 
+const config = theme
+
+const blue = '#5299d3'
+const palette = palx(blue)
+
+const grays = {
+  black: palette.black,
+  slate: palette.gray[8],
+  silver: palette.gray[7],
+  smoke: palette.gray[2],
+  snow: palette.gray[0],
+  white: '#ffffff'
+}
+
+const brand = {
+  primary: blue,
+  important: palette.red[5],
+  accent: palette.fuschia[5],
+  success: palette.teal[5],
+  info: palette.blue[5],
+  warning: palette.orange[5],
+  error: palette.red[7],
+  muted: grays.silver
+}
+
+const colors = {
+  ...brand,
+  ...grays,
+  ...palette
+}
+
+config.colors = colors
+
 const App = () => (
   <BrowserRouter>
-    <ThemeProvider webfonts>
+    <ThemeProvider theme={config} webfonts>
       <Layout>
         <Switch>
           <Route path="/" component={Index} exact />

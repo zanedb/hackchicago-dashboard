@@ -12,22 +12,19 @@ class AttendeeSearch extends Component {
       value: ''
     }
     const attendees = this.props.attendees
+    // make full name of user searchable
     for (const attendee of attendees) {
       attendee.fullname = `${attendee.fname} ${attendee.lname}`
     }
     const options = {
       shouldSort: true,
       threshold: 0.2,
-      location: 0,
-      distance: 100,
-      maxPatternLength: 32,
-      minMatchCharLength: 1,
-      keys: ['_id', 'school', 'fullname', 'email', 'city', 'state']
+      keys: ['_id', 'fullname', 'email']
     }
     this.fuse = new Fuse(props.attendees, options)
   }
 
-  handleInputChange = event => this.setState({ value: event.target.value })
+  handleInputChange = e => this.setState({ value: e.target.value })
 
   render() {
     const results =

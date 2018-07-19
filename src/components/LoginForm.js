@@ -1,8 +1,8 @@
+import React, { Component, Fragment } from 'react'
 import { Container, Field, Text } from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
 import axiosCookieJarSupport from 'node-axios-cookiejar'
-import React, { Component } from 'react'
 import tough from 'tough-cookie'
 
 import Submit from './Submit'
@@ -18,7 +18,6 @@ class LoginForm extends Component {
   render() {
     const { loginCodeSent } = this.state
     return (
-      <Container maxWidth={32} p={3}>
         <Formik
           initialValues={{
             email: '',
@@ -114,21 +113,21 @@ class LoginForm extends Component {
           }) => (
             <form onSubmit={handleSubmit}>
               {loginCodeSent === true ? (
-                <div>
-                  <Text f={3} color="accent" py={2} bold>
-                    Please check your email, and enter the token.
+                <Fragment>
+                  <Text f={3} color="primary" mb={3} bold>
+                    Check your email for your token!
                   </Text>
                   <Field
                     type="text"
                     name="token"
-                    placeholder="000000"
+                    placeholder="012345"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.token}
                     error={errors.token}
                     label="Token"
                   />
-                </div>
+                </Fragment>
               ) : (
                 <Field
                   type="email"
@@ -144,15 +143,14 @@ class LoginForm extends Component {
               <Submit
                 onClick={this.handleSubmit}
                 disabled={isSubmitting}
+                value="Sign in"
                 bg="accent"
-                scale={true}
-                value="Submit"
-                m={2}
+                scale
+                mt={3}
               />
             </form>
           )}
         />
-      </Container>
     )
   }
 }

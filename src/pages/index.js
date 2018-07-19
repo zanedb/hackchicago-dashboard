@@ -1,4 +1,4 @@
-import { Box, Heading } from '@hackclub/design-system'
+import { Container, Box, Text, Heading } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
@@ -9,11 +9,28 @@ import LoadingBar from './../components/LoadingBar'
 import LoginForm from './../components/LoginForm'
 import Projects from './../components/project/Projects'
 import ErrorPage from './../components/ErrorPage'
-import ProjectsHeader from './../components/project/ProjectsHeader'
+import Header from './../components/Header'
+
+const LOGIN_STATUSES = {
+  loading: 'loading',
+  loggedIn: 'logged in'
+}
+
+const Jumbotron = Box.extend`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: url(https://hackchicago.io/img/bg.png);
+  background-size: 100% auto;
+  background-position: bottom;
+`
 
 class Index extends Component {
   state = {
-    loginStatus: 'loading',
+    loginStatus: LOGIN_STATUSES.loading,
     view: 'projects',
     role: '',
     hasSubmitted: false
@@ -40,7 +57,7 @@ class Index extends Component {
       .get('https://api.hackchicago.io/v1/me', { withCredentials: true })
       .then(res => {
         this.setState({
-          loginStatus: 'logged in',
+          loginStatus: LOGIN_STATUSES.loggedIn,
           role: res.data.role
         })
         if (res.data.project) {
@@ -58,7 +75,7 @@ class Index extends Component {
 
   showProjects = () => {
     this.setState({
-      loginStatus: 'logged in',
+      loginStatus: LOGIN_STATUSES.loggedIn,
       view: 'projects'
     })
   }
@@ -78,7 +95,7 @@ class Index extends Component {
       case 'logged in':
         return (
           <Fragment>
-            <ProjectsHeader
+            <Header
               whatIsShowing={view}
               role={role}
               wantToViewProjects={!hasSubmitted}
@@ -96,12 +113,16 @@ class Index extends Component {
         )
       case 'not logged in':
         return (
-          <Box align="center">
-            <Heading m={3}>
-              <Link to="/">Login</Link>
-            </Heading>
+          <Container maxWidth={32} align='left'>
+            <Heading.h1 mt={4}>
+              Welcome!
+            </Heading.h1>
+            <Text color='slate' f={4} my={3}>
+              We can’t wait to see what you’ve built! Enter your email to sign in below.
+            </Text>
             <LoginForm onLogin={this.checkLogin} />
-          </Box>
+            <Jumbotron />
+          </Container>
         )
       default:
         return <ErrorPage />

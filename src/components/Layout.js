@@ -1,31 +1,25 @@
+import React, { Fragment } from 'react'
 import { Box, Flex } from '@hackclub/design-system'
-import React from 'react'
+import { injectGlobal } from 'styled-components'
 
 import Footer from './Footer'
 
 // Corrects body width when scrollbar is present
-const css = `
+injectGlobal`
   body {
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
 `
 
 const Layout = ({ children }) => (
-  <Flex flexDirection="column" style={{ minHeight: '100vh' }}>
-    <style dangerouslySetInnerHTML={{ __html: css }} />
-    <Box
-      align="center"
-      w={1}
-      style={{
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column'
-      }}
-    >
+  <Fragment>
+    <Box.main align="center" px={3} style={{ minHeight: '100vh' }}>
       {children}
-    </Box>
+    </Box.main>
     <Footer />
-  </Flex>
+  </Fragment>
 )
 
 export default Layout

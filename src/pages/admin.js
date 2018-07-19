@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   Box,
+  Flex,
   Heading,
   Divider,
   Container,
@@ -12,6 +13,12 @@ import axios from 'axios'
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
 import AttendeeSearch from './../components/admin/AttendeeSearch'
+import Header from './../components/Header'
+
+const FlexHeading = Flex.withComponent(Heading.h2).extend`
+  align-items: center;
+  text-align: left;
+`
 
 class Admin extends Component {
   state = {
@@ -58,36 +65,26 @@ class Admin extends Component {
         return <LoadingBar />
       case 'logged in':
         return (
-          <Box align="center" p={3}>
-            <Heading m={3} fontSize={6}>
-              Admin
-            </Heading>
-            <Container>
-              <Text align="left" fontSize={5}>
-                Attendees
-              </Text>
-              <Divider />
-              <LoadingBar />
-            </Container>
-          </Box>
+          <Container align="center">
+            <Header whatIsShowing="admin" role="admin" />
+            <Heading.h2 align="left" fontSize={5}>
+              Attendees
+            </Heading.h2>
+            <LoadingBar />
+          </Container>
         )
       case 'loaded':
         return (
-          <Box align="center" p={3}>
-            <Heading m={3} fontSize={6}>
-              Admin
-            </Heading>
-            <Container>
-              <Text align="left" fontSize={5}>
-                Attendees{' '}
-                <Badge bg="smoke" color="slate">
-                  {attendees.length}
-                </Badge>
-              </Text>
-              <Divider />
-              <AttendeeSearch attendees={attendees} />
-            </Container>
-          </Box>
+          <Container align="center">
+            <Header whatIsShowing="admin" role="admin" showProjects={() => { this.props.history.push('/') }} />
+            <FlexHeading fontSize={5} mb={3}>
+              Attendees
+              <Badge bg="smoke" color="slate" ml={['auto', 2]}>
+                {attendees.length}
+              </Badge>
+            </FlexHeading>
+            <AttendeeSearch attendees={attendees} />
+          </Container>
         )
       case 'error':
         return (

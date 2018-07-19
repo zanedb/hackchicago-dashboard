@@ -31,7 +31,7 @@ class EditProject extends Component {
   render() {
     const { project } = this.state
     return (
-      <Container p={4} maxWidth={32}>
+      <Container maxWidth={32}>
         {project.name !== undefined ? (
           <Formik
             initialValues={{
@@ -48,6 +48,7 @@ class EditProject extends Component {
                 return errors
               }, {})
               if (
+                values.name === project.name &&
                 values.link === project.link &&
                 values.tagline === project.tagline &&
                 values.description === project.description
@@ -62,6 +63,7 @@ class EditProject extends Component {
                   method: 'put',
                   url: `https://api.hackchicago.io/v1/projects/${project.id}`,
                   data: {
+                    name: values.name,
                     link: values.link,
                     tagline: values.tagline,
                     description: values.description
@@ -87,8 +89,6 @@ class EditProject extends Component {
                 <Field
                   type="text"
                   name="name"
-                  disabled={true}
-                  bg="smoke"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}

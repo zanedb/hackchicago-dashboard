@@ -5,7 +5,7 @@ import axios from 'axios'
 import ExtendedProject from './../components/project/ExtendedProject'
 import LoadingBar from './../components/LoadingBar'
 import ErrorPage from './../components/ErrorPage'
-import ProjectsHeader from './../components/project/ProjectsHeader'
+import Header from './../components/Header'
 
 class Project extends Component {
   state = {
@@ -109,7 +109,7 @@ class Project extends Component {
       case 'loaded':
         return (
           <Fragment>
-            <ProjectsHeader
+            <Header
               whatIsShowing="project"
               role={role}
               wantToViewProjects={true}

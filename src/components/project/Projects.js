@@ -1,10 +1,16 @@
+import React, { Component } from 'react'
 import { Container, Flex, Text } from '@hackclub/design-system'
 import axios from 'axios'
-import React, { Component } from 'react'
 
 import ErrorPage from './../ErrorPage'
 import LoadingBar from './../LoadingBar'
 import Project from './Project'
+
+const Grid = Container.extend`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+`
 
 class Projects extends Component {
   state = {
@@ -106,31 +112,29 @@ class Projects extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Container>
-            <Flex p={4} wrap>
-              {projects.length < 1 ? (
-                <Text f={3} color="muted" py={4} align="center" bold>
-                  No projects yet!
-                </Text>
-              ) : (
-                projects.map(project => (
-                  <Project
-                    key={project.id}
-                    id={project.id}
-                    name={project.name}
-                    link={project.link}
-                    tagline={project.tagline}
-                    description={project.description}
-                    submitter={project.submitter}
-                    timestamp={project.timestamp}
-                    upvotesCount={project.upvotes}
-                    upvoteProject={this.upvoteProject}
-                    isUpvoted={upvotes.includes(project.id) ? true : false}
-                  />
-                ))
-              )}
-            </Flex>
-          </Container>
+          <Grid align="left">
+            {projects.length < 1 ? (
+              <Text f={3} color="muted" py={4} align="center" bold>
+                No projects yet!
+              </Text>
+            ) : (
+              projects.map(project => (
+                <Project
+                  key={project.id}
+                  id={project.id}
+                  name={project.name}
+                  link={project.link}
+                  tagline={project.tagline}
+                  description={project.description}
+                  submitter={project.submitter}
+                  timestamp={project.timestamp}
+                  upvotesCount={project.upvotes}
+                  upvoteProject={this.upvoteProject}
+                  isUpvoted={upvotes.includes(project.id) ? true : false}
+                />
+              ))
+            )}
+          </Grid>
         )
       case 'error':
         return (
