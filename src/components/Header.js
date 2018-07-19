@@ -27,11 +27,11 @@ const ProjectsHeader = ({
   <Base mt={4} mb={3} width={1}>
     <Heading.h1 fontSize={[6, 7]} align="left">
       <Link to="/" onClick={showProjects}>
-        {whatIsShowing.toLowerCase().includes('projects') && 'Projects'}
+        {whatIsShowing.toLowerCase().includes('project') && 'Projects'}
         {whatIsShowing.toLowerCase().includes('admin') && 'Admin'}
       </Link>
     </Heading.h1>
-    {whatIsShowing.toLowerCase().includes('projects') ? (
+    {whatIsShowing === 'projects' ? (
       <Fragment>
         {wantToViewProjects ? (
           <Button onClick={addProject} bg="accent" mr={2} scale>
