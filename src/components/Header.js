@@ -29,6 +29,7 @@ const ProjectsHeader = ({
       <Link to="/" onClick={showProjects}>
         {whatIsShowing.toLowerCase().includes('project') && 'Projects'}
         {whatIsShowing.toLowerCase().includes('admin') && 'Admin'}
+        {whatIsShowing.toLowerCase().includes('attendee') && 'Attendee'}
       </Link>
     </Heading.h1>
     {whatIsShowing === 'projects' ? (

@@ -8,6 +8,7 @@ import NotFound from './pages/404'
 import Index from './pages/index'
 import Project from './pages/project'
 import Admin from './pages/admin'
+import Attendee from './pages/attendee'
 
 const config = theme
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/" component={Index} exact />
           <Route path="/admin" component={Admin} exact />
           <Route path="/project/:project_id" component={Project} exact />
+          <Route path="/attendee/:attendee_id" component={Attendee} exact />
           <Route component={NotFound} />
         </Switch>
       </Layout>
