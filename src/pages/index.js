@@ -25,7 +25,7 @@ class Index extends Component {
       .then(res => {
         this.setState({
           loginStatus: 'logged in',
-          role: loginRequest.data.role
+          role: res.data.role
         })
         if (res.data.project) {
           this.setState({
