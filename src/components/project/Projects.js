@@ -134,7 +134,7 @@ class Projects extends Component {
         )
       case 'error':
         return (
-          <Text f={3} color="error" py={4} align="center" bold>
+          <Text f={3} color="error" py={4} p={3} align="center" bold>
             Error: {message}
           </Text>
         )
