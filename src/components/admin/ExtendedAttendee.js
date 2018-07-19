@@ -25,7 +25,6 @@ const Buttons = Flex.extend`
 class ExtendedProject extends Component {
   render() {
     const {
-      key,
       role,
       fname,
       lname,
