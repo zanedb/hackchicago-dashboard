@@ -3,8 +3,16 @@ import React from 'react'
 
 import Footer from './Footer'
 
+// Corrects body width when scrollbar is present
+const css = `
+  body {
+    width: 100%;
+  }
+`
+
 const Layout = ({ children }) => (
   <Flex flexDirection="column" style={{ minHeight: '100vh' }}>
+    <style dangerouslySetInnerHTML={{ __html: css }} />
     <Box
       align="center"
       w={1}
