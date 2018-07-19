@@ -57,7 +57,7 @@ class Project extends Component {
           <Fragment>
             <Header
               whatIsShowing="attendee"
-              role={role}
+              role="admin"
               showProjects={this.returnHome}
               doLogout={this.returnHome}
             />
