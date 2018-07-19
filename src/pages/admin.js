@@ -1,13 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import {
-  Box,
-  Flex,
-  Heading,
-  Divider,
-  Container,
-  Text,
-  Badge
-} from '@hackclub/design-system'
+import React, { Component } from 'react'
+import { Flex, Heading, Container, Text, Badge } from '@hackclub/design-system'
 import axios from 'axios'
 
 import LoadingBar from './../components/LoadingBar'

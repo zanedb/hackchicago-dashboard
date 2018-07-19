@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Container, Field, Text } from '@hackclub/design-system'
+import { Field, Text } from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
 import axiosCookieJarSupport from 'node-axios-cookiejar'

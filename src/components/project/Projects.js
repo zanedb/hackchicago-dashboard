@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Flex, Text } from '@hackclub/design-system'
+import { Container, Text } from '@hackclub/design-system'
 import axios from 'axios'
 
 import ErrorPage from './../ErrorPage'

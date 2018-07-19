@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Box, Flex } from '@hackclub/design-system'
+import { Box } from '@hackclub/design-system'
 import { injectGlobal } from 'styled-components'
 
 import Footer from './Footer'

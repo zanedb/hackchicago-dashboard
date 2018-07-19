@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Flex,
-  Heading,
   Icon,
   Link,
   Text

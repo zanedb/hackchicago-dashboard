@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  Heading,
-  Image,
-  Icon,
-  Text
-} from '@hackclub/design-system'
+import { Button, Card, Flex, Image, Icon, Text } from '@hackclub/design-system'
 import React from 'react'
 import { Link } from 'react-router-dom'
 

@@ -1,7 +1,6 @@
 import { Container, Box, Text, Heading } from '@hackclub/design-system'
 import axios from 'axios'
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
 
 import AddProject from './../components/project/AddProject'
 import EditProject from './../components/project/EditProject'
