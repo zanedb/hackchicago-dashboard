@@ -118,7 +118,7 @@ class Project extends Component {
               showProjects={this.returnHome}
               doLogout={this.returnHome}
             />
-            <Container p={4}>
+            <Container>
               <ExtendedProject
                 key={project.id}
                 id={project.id}
