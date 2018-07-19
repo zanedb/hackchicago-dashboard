@@ -58,7 +58,16 @@ class Admin extends Component {
       case 'logged in':
         return (
           <Container align="center">
-            <Header whatIsShowing="admin" role="admin" />
+            <Header
+              whatIsShowing="admin"
+              role="admin"
+              showProjects={() => {
+                this.props.history.push('/')
+              }}
+              onLogout={() => {
+                this.props.history.push('/')
+              }}
+            />
             <Heading.h2 align="left" fontSize={5}>
               Attendees
             </Heading.h2>
@@ -72,6 +81,9 @@ class Admin extends Component {
               whatIsShowing="admin"
               role="admin"
               showProjects={() => {
+                this.props.history.push('/')
+              }}
+              onLogout={() => {
                 this.props.history.push('/')
               }}
             />
