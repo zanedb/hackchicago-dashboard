@@ -19,29 +19,25 @@ class Index extends Component {
     hasSubmitted: false
   }
 
-  async componentDidMount() {
-    try {
-      const loginRequest = await axios({
-        method: 'get',
-        url: 'https://api.hackchicago.io/v1/me',
-        withCredentials: true
-      })
-      if (loginRequest.status === 200) {
+  componentDidMount() {
+    axios
+      .get('https://api.hackchicago.io/v1/me', { withCredentials: true })
+      .then(res => {
         this.setState({
           loginStatus: 'logged in',
           role: loginRequest.data.role
         })
-        if (loginRequest.data.project) {
+        if (res.data.project) {
           this.setState({
             hasSubmitted: true
           })
         }
-      }
-    } catch (error) {
-      this.setState({
-        loginStatus: 'not logged in'
       })
-    }
+      .catch(error => {
+        this.setState({
+          loginStatus: 'not logged in'
+        })
+      })
   }
 
   addProject = () => {
