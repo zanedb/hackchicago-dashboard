@@ -96,16 +96,18 @@ class ExtendedAttendee extends Component {
           <Button bg="primary" mr={1}>
             Edit Attendee
           </Button>
-          <Button
-            bg="important"
-            mr={1}
-            onClick={() => {
-              if (window.confirm(`Are you SURE you want to delete ${fname}?`))
-                this.deleteAttendee(id)
-            }}
-          >
-            Delete Attendee
-          </Button>
+          {role !== 'admin' && (
+            <Button
+              bg="important"
+              mr={1}
+              onClick={() => {
+                if (window.confirm(`Are you SURE you want to delete ${fname}?`))
+                  this.deleteAttendee(id)
+              }}
+            >
+              Delete Attendee
+            </Button>
+          )}
           <Button bg="muted" onClick={viewAdmin}>
             Cancel
           </Button>
