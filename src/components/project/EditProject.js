@@ -1,4 +1,11 @@
-import { Box, Button, Container, Field, Image, Text } from '@hackclub/design-system'
+import {
+  Box,
+  Button,
+  Container,
+  Field,
+  Image,
+  Text
+} from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
 import React, { Component } from 'react'
@@ -38,7 +45,7 @@ class EditProject extends Component {
       <Container maxWidth={32}>
         {project.name !== undefined ? (
           <Formik
-            initialValues={{  
+            initialValues={{
               name: project.name,
               link: project.link,
               tagline: project.tagline,
@@ -150,7 +157,11 @@ class EditProject extends Component {
                       }
                     }))
                   }}
-                  style={{ border: 'dashed 2px #999', height: '200px', width: '100%' }}
+                  style={{
+                    border: 'dashed 2px #999',
+                    height: '200px',
+                    width: '100%'
+                  }}
                 >
                   <UploadDisplay />
                 </S3Uploader>

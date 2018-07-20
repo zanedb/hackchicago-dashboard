@@ -2,6 +2,7 @@ import { Box, Field, Button } from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
 import React from 'react'
+import S3Uploader from 'react-dropzone-s3-uploader'
 
 import Submit from './../Submit'
 
@@ -52,6 +53,12 @@ const AddProject = props => (
         isSubmitting
       }) => (
         <form onSubmit={handleSubmit}>
+          <S3Uploader
+            s3Url="https://bucketeer-7ee5d283-9b66-40f2-8629-74477b7eee12.s3.amazonaws.com/"
+            onFinish={info => {
+              console.log(info)
+            }}
+          />
           <Field
             type="text"
             name="name"
