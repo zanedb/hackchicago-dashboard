@@ -1,24 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import {
-  Badge,
-  Button,
-  Flex,
-  Heading,
-  Link,
-  Text
-} from '@hackclub/design-system'
+import React, { Fragment } from 'react'
+import { Badge, Flex, Heading, Link, Text } from '@hackclub/design-system'
 
-const ProjectButton = Button.button.extend`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  box-shadow: none !important;
-`
-const Buttons = Flex.extend`
-  display: flex;
-  flex-flow: column;
-`
 const FlexHeading = Flex.withComponent(Heading.h2).extend`
   align-items: center;
   text-align: left;
