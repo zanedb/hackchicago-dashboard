@@ -8,7 +8,7 @@ const FlexHeading = Flex.withComponent(Heading.h2).extend`
 
 const ExtendedAttendee = ({ attendee }) => (
   <Fragment>
-    <FlexHeading fontSize={6} mb={2}>
+    <FlexHeading>
       {attendee.fname} {attendee.lname}
       <Badge
         bg={attendee.role === 'admin' ? 'important' : 'smoke'}
@@ -18,10 +18,13 @@ const ExtendedAttendee = ({ attendee }) => (
         {attendee.role}
       </Badge>
     </FlexHeading>
-    <Heading f={4} mb={3}>
+    <Text f={3} mb={2} color="slate">
+      Signed up at {attendee.timestamp}
+    </Text>
+    <Text f={4}>
       {attendee.grade}th Grader at {attendee.school} in {attendee.city},{' '}
       {attendee.state}
-    </Heading>
+    </Text>
     <Text f={4}>
       Email: <Link href={`mailto:${attendee.email}`}>{attendee.email}</Link>
       {attendee.phone !== '' && (
@@ -31,9 +34,7 @@ const ExtendedAttendee = ({ attendee }) => (
         </Fragment>
       )}
     </Text>
-    <Heading.h2 f={5} my={3}>
-      Parent/Guardian
-    </Heading.h2>
+    <Heading.h3 my={2}>Parent/Guardian</Heading.h3>
     <Text f={4}>
       Name: {attendee.parentName}
       <br />

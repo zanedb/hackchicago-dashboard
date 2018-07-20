@@ -53,7 +53,7 @@ class EditProject extends Component {
                 values.tagline === project.tagline &&
                 values.description === project.description
               ) {
-                allErrors.unedited = 'Project info cannot be the same'
+                allErrors.general = 'Project info cannot be the same'
               }
               return allErrors
             }}

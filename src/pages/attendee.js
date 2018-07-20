@@ -74,7 +74,7 @@ class Project extends Component {
         return <LoadingBar />
       case 'loaded':
         return (
-          <Fragment>
+          <Box my={4}>
             <Header
               whatIsShowing="attendee"
               role="admin"
@@ -84,7 +84,7 @@ class Project extends Component {
             {view === 'show' && (
               <Container align="left">
                 <ExtendedAttendee attendee={attendee} />
-                <Flex mt={4}>
+                <Flex mt={3}>
                   <Button
                     bg="primary"
                     mr={1}
@@ -118,8 +118,18 @@ class Project extends Component {
                 </Flex>
               </Container>
             )}
-            {view === 'edit' && <EditAttendee attendee={attendee} />}
-          </Fragment>
+            {view === 'edit' && (
+              <EditAttendee
+                attendee={attendee}
+                onEnd={() => {
+                  this.loadAttendee()
+                  this.setState({
+                    view: 'show'
+                  })
+                }}
+              />
+            )}
+          </Box>
         )
       case 'invalid':
         return (
