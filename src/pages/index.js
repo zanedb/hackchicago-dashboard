@@ -100,7 +100,7 @@ class Index extends Component {
             <Header
               whatIsShowing={view}
               role={role}
-              wantToViewProjects={!hasSubmitted}
+              hasSubmitted={hasSubmitted}
               editProject={this.editProject}
               addProject={this.addProject}
               showProjects={this.showProjects}

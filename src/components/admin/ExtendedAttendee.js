@@ -39,7 +39,8 @@ const ExtendedProject = ({
   isApproved,
   parentEmail,
   parentName,
-  parentPhone
+  parentPhone,
+  viewAdmin
 }) => (
   <Container align="left">
     <FlexHeading fontSize={6} mb={2}>
@@ -80,7 +81,7 @@ const ExtendedProject = ({
       <Button bg="important" mr={1}>
         Delete Attendee
       </Button>
-      <Button bg="muted" onClick={this.props.viewAdmin}>
+      <Button bg="muted" onClick={viewAdmin}>
         Cancel
       </Button>
     </Flex>

@@ -17,7 +17,7 @@ const Base = Container.withComponent(Flex).extend`
 const ProjectsHeader = ({
   whatIsShowing,
   role,
-  wantToViewProjects,
+  hasSubmitted,
   editProject,
   addProject,
   showProjects,
@@ -34,7 +34,7 @@ const ProjectsHeader = ({
     </Heading.h1>
     {whatIsShowing === 'projects' ? (
       <Fragment>
-        {wantToViewProjects ? (
+        {!hasSubmitted ? (
           <Button onClick={addProject} bg="accent" mr={2} scale>
             Add Project
           </Button>
