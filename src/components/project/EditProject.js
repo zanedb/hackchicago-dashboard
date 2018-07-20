@@ -1,14 +1,24 @@
-import { Container, Field, Button, Text } from '@hackclub/design-system'
-import React, { Component } from 'react'
+import {
+  Box,
+  Button,
+  Container,
+  Field,
+  Image,
+  Text
+} from '@hackclub/design-system'
 import axios from 'axios'
 import { Formik } from 'formik'
+import React, { Component } from 'react'
 
-import Submit from './../Submit'
 import LoadingBar from './../LoadingBar'
+import Submit from './../Submit'
+import UploadDisplay from './UploadDisplay'
+import Uploader from './Uploader'
 
 class EditProject extends Component {
   state = {
-    project: {}
+    project: {},
+    isUploading: false
   }
 
   async componentDidMount() {
@@ -30,6 +40,7 @@ class EditProject extends Component {
 
   render() {
     const { project } = this.state
+    console.log(project)
     return (
       <Container maxWidth={32}>
         {project.name !== undefined ? (
@@ -38,7 +49,8 @@ class EditProject extends Component {
               name: project.name,
               link: project.link,
               tagline: project.tagline,
-              description: project.description
+              description: project.description,
+              images: project.images || []
             }}
             validate={values => {
               const allErrors = Object.keys(values).reduce((errors, value) => {
@@ -66,7 +78,8 @@ class EditProject extends Component {
                     name: values.name,
                     link: values.link,
                     tagline: values.tagline,
-                    description: values.description
+                    description: values.description,
+                    images: values.images
                   },
                   withCredentials: true
                 })
@@ -126,9 +139,29 @@ class EditProject extends Component {
                   error={errors.description}
                   label="Description"
                 />
+                <Uploader
+                  upload={{
+                    server: 'https://hackchicago-ifvictr.c9users.io:8081',
+                    signingUrl: '/s3/sign',
+                    signingUrlWithCredentials: true,
+                    signingUrlMethod: 'get',
+                    accept: '.jpg, .jpeg, .png'
+                  }}
+                  onFinish={info => {
+                    this.setState((state, props) => ({
+                      isUploading: false,
+                      project: {
+                        ...state.project,
+                        images: [...(state.project.images || []), info.fileUrl]
+                      }
+                    }))
+                  }}
+                >
+                  <UploadDisplay />
+                </Uploader>
                 {errors.general && <Text color="error">{errors.general}</Text>}
                 <Submit
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || this.state.isUploading}
                   bg="accent"
                   m={2}
                   scale={true}

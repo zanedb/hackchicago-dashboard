@@ -131,6 +131,7 @@ class Projects extends Component {
                   upvotesCount={project.upvotes}
                   upvoteProject={this.upvoteProject}
                   isUpvoted={upvotes.includes(project.id) ? true : false}
+                  images={project.images || []}
                 />
               ))
             )}
