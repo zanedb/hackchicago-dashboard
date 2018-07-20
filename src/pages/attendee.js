@@ -83,22 +83,7 @@ class Project extends Component {
             />
             {view === 'show' && (
               <Container align="left">
-                <ExtendedAttendee
-                  role={attendee.role}
-                  fname={attendee.fname}
-                  lname={attendee.lname}
-                  id={attendee._id}
-                  phone={attendee.phone}
-                  email={attendee.email}
-                  grade={attendee.grade}
-                  school={attendee.school}
-                  city={attendee.city}
-                  state={attendee.state}
-                  isApproved={attendee.isApproved}
-                  parentName={attendee.parentName}
-                  parentEmail={attendee.parentEmail}
-                  parentPhone={attendee.parentPhone}
-                />
+                <ExtendedAttendee attendee={attendee} />
                 <Flex mt={4}>
                   <Button
                     bg="primary"

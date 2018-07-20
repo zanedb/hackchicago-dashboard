@@ -26,23 +26,21 @@ const FlexHeading = Flex.withComponent(Heading.h2).extend`
 
 class ExtendedAttendee extends Component {
   render() {
+    const { attendee } = this.props
     const {
-      role,
       fname,
       lname,
-      id,
-      phone,
-      email,
+      role,
       grade,
       school,
       city,
       state,
-      isApproved,
-      parentEmail,
+      email,
+      phone,
       parentName,
-      parentPhone,
-      viewAdmin
-    } = this.props
+      parentEmail,
+      parentPhone
+    } = attendee
     return (
       <Fragment>
         <FlexHeading fontSize={6} mb={2}>
