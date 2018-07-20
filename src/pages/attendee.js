@@ -47,6 +47,10 @@ class Project extends Component {
     this.props.history.push('/')
   }
 
+  viewAdmin = () => {
+    this.props.history.push('/admin')
+  }
+
   render() {
     const { attendee, status } = this.state
     switch (status) {
@@ -78,6 +82,7 @@ class Project extends Component {
                 parentName={attendee.parentName}
                 parentEmail={attendee.parentEmail}
                 parentPhone={attendee.parentPhone}
+                viewAdmin={this.viewAdmin}
               />
             </Container>
           </Fragment>

@@ -134,12 +134,7 @@ class EditProject extends Component {
                   scale={true}
                   value="Submit"
                 />
-                <Button
-                  onClick={this.props.onEnd}
-                  bg="accent"
-                  inverted={true}
-                  m={2}
-                >
+                <Button onClick={this.props.onEnd} bg="muted" m={2}>
                   Cancel
                 </Button>
               </form>

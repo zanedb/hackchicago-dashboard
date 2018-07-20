@@ -23,23 +23,13 @@ const Jumbotron = Box.extend`
   right: 0;
   z-index: -1;
   background-image: url(https://hackchicago.io/img/bg.png);
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: bottom;
-`
-/*  background-size: 340% auto;
+  background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: bottom;
   ${({ theme }) => theme.mediaQueries.md} {
-    background-size: 200% auto;
+    background-size: cover;
   }
-  ${({ theme }) => theme.mediaQueries.m} {
-    background-size: 200% auto;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    background-size: 100% auto;
-  }*/
-
+`
 class Index extends Component {
   state = {
     loginStatus: LOGIN_STATUSES.loading,

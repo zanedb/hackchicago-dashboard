@@ -126,6 +126,7 @@ class LoginForm extends Component {
                   value={values.token}
                   error={errors.token}
                   label="Token"
+                  bg="blue.0"
                 />
               </Fragment>
             ) : (
@@ -138,6 +139,7 @@ class LoginForm extends Component {
                 value={values.email}
                 label="Email"
                 error={errors.email}
+                bg="blue.0"
               />
             )}
             {errors.general && <Text color="error">{errors.general}</Text>}

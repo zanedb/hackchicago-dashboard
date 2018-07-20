@@ -25,7 +25,7 @@ const ProjectsHeader = ({
   ...props
 }) => (
   <Base mt={4} mb={3} width={1}>
-    <Heading.h1 fontSize={[6, 7]} align="left">
+    <Heading.h1 fontSize={6} align="left">
       <Link to="/" onClick={showProjects}>
         {whatIsShowing.toLowerCase().includes('project') && 'Projects'}
         {whatIsShowing.toLowerCase().includes('admin') && 'Admin'}
