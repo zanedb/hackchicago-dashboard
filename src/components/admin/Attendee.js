@@ -37,21 +37,18 @@ const Attendee = ({
   school,
   city,
   state,
-  isApproved,
+  checkedIn,
   ...props
 }) => (
   <Base color="black" py={[2, 3]}>
     <Buttons ml={1} mr={1}>
       <ProjectButton
-        bg={isApproved ? 'success' : 'smoke'}
-        color={isApproved ? 'white' : 'slate'}
+        bg={checkedIn ? 'success' : 'smoke'}
+        color={checkedIn ? 'white' : 'slate'}
         mb={1}
-        aria-label={isApproved ? 'Approved' : 'Not approved'}
+        aria-label={checkedIn ? 'Checked in' : 'Not checked in'}
       >
-        <Icon size={20} name={isApproved ? 'check' : 'cancel'} />
-      </ProjectButton>
-      <ProjectButton bg="smoke" color="slate" mt={1}>
-        <Icon size={20} name="open_in_new" />
+        <Icon size={20} name={checkedIn ? 'check' : 'cancel'} />
       </ProjectButton>
     </Buttons>
     <Box ml={2} align="left">

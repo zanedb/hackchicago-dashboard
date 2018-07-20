@@ -55,7 +55,7 @@ class AttendeeSearch extends Component {
                 school={attendee.school}
                 city={attendee.city}
                 state={attendee.state}
-                isApproved={attendee.isApproved}
+                checkedIn={attendee.checkedIn}
               />
             ))}
           </Fragment>
