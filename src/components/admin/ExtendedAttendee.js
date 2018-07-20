@@ -26,7 +26,6 @@ const FlexHeading = Flex.withComponent(Heading.h2).extend`
 
 class ExtendedAttendee extends Component {
   render() {
-    const { attendee } = this.props
     const {
       fname,
       lname,
@@ -40,7 +39,7 @@ class ExtendedAttendee extends Component {
       parentName,
       parentEmail,
       parentPhone
-    } = attendee
+    } = this.props.attendee
     return (
       <Fragment>
         <FlexHeading fontSize={6} mb={2}>
