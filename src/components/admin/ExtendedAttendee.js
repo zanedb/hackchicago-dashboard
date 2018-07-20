@@ -5,10 +5,8 @@ import {
   Flex,
   Heading,
   Link,
-  Text,
-  Container
+  Text
 } from '@hackclub/design-system'
-import axios from 'axios'
 
 const ProjectButton = Button.button.extend`
   display: inline-flex;
@@ -27,20 +25,6 @@ const FlexHeading = Flex.withComponent(Heading.h2).extend`
 `
 
 class ExtendedAttendee extends Component {
-  deleteAttendee(id) {
-    axios
-      .delete(`https://api.hackchicago.io/v1/attendees/id/${id}`, {
-        withCredentials: true
-      })
-      .then(res => {
-        console.log(res)
-        this.props.viewAdmin()
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  }
-
   render() {
     const {
       role,
@@ -60,7 +44,7 @@ class ExtendedAttendee extends Component {
       viewAdmin
     } = this.props
     return (
-      <Container align="left">
+      <Fragment>
         <FlexHeading fontSize={6} mb={2}>
           {fname} {lname}
           <Badge
@@ -92,27 +76,7 @@ class ExtendedAttendee extends Component {
           <br />
           Phone: <Link href={`tel:${parentPhone}`}>{parentPhone}</Link>
         </Text>
-        <Flex mt={4}>
-          <Button bg="primary" mr={1}>
-            Edit Attendee
-          </Button>
-          {role !== 'admin' && (
-            <Button
-              bg="important"
-              mr={1}
-              onClick={() => {
-                if (window.confirm(`Are you SURE you want to delete ${fname}?`))
-                  this.deleteAttendee(id)
-              }}
-            >
-              Delete Attendee
-            </Button>
-          )}
-          <Button bg="muted" onClick={viewAdmin}>
-            Cancel
-          </Button>
-        </Flex>
-      </Container>
+      </Fragment>
     )
   }
 }
