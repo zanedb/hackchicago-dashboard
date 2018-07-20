@@ -9,11 +9,11 @@ import {
 import axios from 'axios'
 import { Formik } from 'formik'
 import React, { Component } from 'react'
-import S3Uploader from 'react-dropzone-s3-uploader'
 
 import LoadingBar from './../LoadingBar'
 import Submit from './../Submit'
 import UploadDisplay from './UploadDisplay'
+import Uploader from './Uploader'
 
 class EditProject extends Component {
   state = {
@@ -139,8 +139,7 @@ class EditProject extends Component {
                   error={errors.description}
                   label="Description"
                 />
-                <S3Uploader
-                  s3Url="https://bucketeer-7ee5d283-9b66-40f2-8629-74477b7eee12.s3.amazonaws.com"
+                <Uploader
                   upload={{
                     server: 'https://hackchicago-ifvictr.c9users.io:8081',
                     signingUrl: '/s3/sign',
@@ -157,14 +156,9 @@ class EditProject extends Component {
                       }
                     }))
                   }}
-                  style={{
-                    border: 'dashed 2px #999',
-                    height: '200px',
-                    width: '100%'
-                  }}
                 >
                   <UploadDisplay />
-                </S3Uploader>
+                </Uploader>
                 {errors.general && <Text color="error">{errors.general}</Text>}
                 <Submit
                   disabled={isSubmitting || this.state.isUploading}
