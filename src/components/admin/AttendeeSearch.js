@@ -15,6 +15,7 @@ class AttendeeSearch extends Component {
     // make full name of user searchable
     for (const attendee of attendees) {
       attendee.fullname = `${attendee.fname} ${attendee.lname}`
+      attendee.error = false
     }
     const options = {
       shouldSort: true,
@@ -56,6 +57,10 @@ class AttendeeSearch extends Component {
                 city={attendee.city}
                 state={attendee.state}
                 checkedIn={attendee.checkedIn}
+                checkInAttendee={e => {
+                  this.props.checkInAttendee(attendee._id)
+                }}
+                error={attendee.error}
               />
             ))}
           </Fragment>

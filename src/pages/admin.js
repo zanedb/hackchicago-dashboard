@@ -50,6 +50,37 @@ class Admin extends Component {
       })
   }
 
+  checkInAttendee = id => {
+    axios
+      .post(
+        `https://api.hackchicago.io/v1/attendees/id/${id}/checkin`,
+        {},
+        { withCredentials: true }
+      )
+      .then(res => {
+        this.setState(({ attendees }) => {
+          for (const attendee of attendees) {
+            if (attendee._id === id) {
+              attendee.checkedIn = true
+              attendee.error = false
+            }
+          }
+          return { attendees }
+        })
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          this.setState(({ attendees }) => {
+            for (const attendee of attendees) {
+              if (attendee._id === id) attendee.error = true
+            }
+            return { attendees }
+          })
+          alert(error.response.data.message)
+        }
+      })
+  }
+
   render() {
     const { status, error, attendees } = this.state
     switch (status) {
@@ -93,7 +124,10 @@ class Admin extends Component {
                 {attendees.length}
               </Badge>
             </FlexHeading>
-            <AttendeeSearch attendees={attendees} />
+            <AttendeeSearch
+              attendees={attendees}
+              checkInAttendee={this.checkInAttendee}
+            />
           </Container>
         )
       case 'error':
