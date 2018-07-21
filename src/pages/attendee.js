@@ -20,8 +20,7 @@ const Switch = Box.extend`
   display: inline-flex;
   width: 40px;
   height: 24px;
-  background-color: ${props =>
-    props.checked ? props.theme.cx(props.color) : 'transparent'};
+  background-color: ${props => (props.checked ? 'green' : 'transparent')};
   box-shadow: inset 0 0 0 2px;
   transition-property: background-color;
   transition-duration: 0.25s;
