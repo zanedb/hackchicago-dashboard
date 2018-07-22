@@ -1,38 +1,32 @@
-import { Container, Field, Button } from '@hackclub/design-system'
+import { Box, Container, Field, Button, Heading } from '@hackclub/design-system'
 import axios from 'axios'
+import * as yup from 'yup'
 import { Formik } from 'formik'
 import React from 'react'
 
 import Submit from './../Submit'
 
+const Form = Box.withComponent('form')
+
 const AddProject = props => (
   <Container maxWidth={32} align="center" p={4} w={1} {...props}>
     <Formik
       initialValues={{
-        name: '',
-        link: '',
-        tagline: '',
-        description: ''
+        link: ''
       }}
-      validate={values => {
-        const allErrors = Object.keys(values).reduce((errors, value) => {
-          if (!values[value]) {
-            errors[value] = 'Required'
-          }
-          return errors
-        }, {})
-        return allErrors
-      }}
+      validationSchema={yup.object().shape({
+        url: yup
+          .string()
+          .url()
+          .matches(/devpost\.com\/software/, 'must be a devpost.com link')
+      })}
       onSubmit={async (values, { setSubmitting, setErrors }) => {
         try {
           const uploadProjectRequest = await axios({
             method: 'post',
             url: 'https://api.hackchicago.io/v1/projects',
             data: {
-              name: values.name,
-              link: values.link,
-              tagline: values.tagline,
-              description: values.description
+              link: values.link
             },
             withCredentials: true
           })
@@ -51,59 +45,30 @@ const AddProject = props => (
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit}>
-          <Field
-            type="text"
-            name="name"
-            placeholder="A Fantastical Project"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.name}
-            error={errors.name}
-            label="Project Name"
-          />
+        <Form color="black" onSubmit={handleSubmit}>
+          <Heading.h2 mb={3}>Submit your project</Heading.h2>
           <Field
             type="url"
             name="link"
-            placeholder="Link to a working demo, GitHub repository, etc."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.link}
             error={errors.link}
-            label="Project URL"
+            label="Devpost URL"
+            autoFocus
+            mb={4}
           />
-          <Field
-            type="text"
-            name="tagline"
-            placeholder="Write a brief description of your project here"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.tagline}
-            error={errors.tagline}
-            label="Tagline"
-          />
-          <Field
-            type="textarea"
-            name="description"
-            placeholder="Write an extended description of your project here (markdown supported!)"
-            rows={10}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.description}
-            error={errors.description}
-            label="Description"
-          />
-          <Submit
-            disabled={isSubmitting}
-            bg="accent"
-            m={2}
-            scale={true}
-            value="Submit"
-          />
-          <Button onClick={props.onEnd} bg="accent" inverted={true} m={2}>
+          <Button onClick={props.onEnd} bg="muted" inverted scale mr={2}>
             Cancel
           </Button>
-        </form>
+          <Submit
+            disabled={isSubmitting}
+            bg="primary"
+            ml={2}
+            scale
+            value="Post"
+          />
+        </Form>
       )}
     />
   </Container>

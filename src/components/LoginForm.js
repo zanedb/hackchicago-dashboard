@@ -127,6 +127,7 @@ class LoginForm extends Component {
                   error={errors.token}
                   label="Token"
                   bg="blue.0"
+                  autoFocus
                 />
               </Fragment>
             ) : (
@@ -140,6 +141,7 @@ class LoginForm extends Component {
                 label="Email"
                 error={errors.email}
                 bg="blue.0"
+                autoFocus
               />
             )}
             {errors.general && <Text color="error">{errors.general}</Text>}

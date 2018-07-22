@@ -1,6 +1,7 @@
-import { Container, Field, Button, Text } from '@hackclub/design-system'
 import React, { Component } from 'react'
+import { Box, Container, Field, Button, Heading } from '@hackclub/design-system'
 import axios from 'axios'
+import * as yup from 'yup'
 import { Formik } from 'formik'
 
 import Submit from './../Submit'
@@ -31,32 +32,18 @@ class EditProject extends Component {
   render() {
     const { project } = this.state
     return (
-      <Container maxWidth={32}>
+      <Container maxWidth={32} color="black" align="center" p={4} w={1}>
         {project.name !== undefined ? (
           <Formik
             initialValues={{
-              name: project.name,
-              link: project.link,
-              tagline: project.tagline,
-              description: project.description
+              link: ''
             }}
-            validate={values => {
-              const allErrors = Object.keys(values).reduce((errors, value) => {
-                if (!values[value]) {
-                  errors[value] = 'Required'
-                }
-                return errors
-              }, {})
-              if (
-                values.name === project.name &&
-                values.link === project.link &&
-                values.tagline === project.tagline &&
-                values.description === project.description
-              ) {
-                allErrors.general = 'Project info cannot be the same'
-              }
-              return allErrors
-            }}
+            validationSchema={yup.object().shape({
+              url: yup
+                .string()
+                .url()
+                .matches(/devpost\.com\/software/, 'must be a devpost.com link')
+            })}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
               try {
                 const updateProjectRequest = await axios({
@@ -83,60 +70,31 @@ class EditProject extends Component {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
+              props
             }) => (
               <form onSubmit={handleSubmit}>
-                <Field
-                  type="text"
-                  name="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                  error={errors.name}
-                  label="Project Name"
-                />
+                <Heading.h2 mb={3}>Edit your project</Heading.h2>
                 <Field
                   type="url"
                   name="link"
-                  placeholder="Link to a working demo, GitHub repository, etc."
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.link}
                   error={errors.link}
-                  label="Project URL"
+                  label="Devpost URL"
+                  mb={4}
                 />
-                <Field
-                  type="text"
-                  name="tagline"
-                  placeholder="Write a brief description of your project here"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.tagline}
-                  error={errors.tagline}
-                  label="Tagline"
-                />
-                <Field
-                  type="textarea"
-                  name="description"
-                  placeholder="Write an extended description of your project here (markdown supported!)"
-                  rows={10}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.description}
-                  error={errors.description}
-                  label="Description"
-                />
-                {errors.general && <Text color="error">{errors.general}</Text>}
-                <Submit
-                  disabled={isSubmitting}
-                  bg="accent"
-                  m={2}
-                  scale={true}
-                  value="Submit"
-                />
-                <Button onClick={this.props.onEnd} bg="muted" m={2}>
+                <Button onClick={props.onEnd} bg="muted" inverted scale mr={2}>
                   Cancel
                 </Button>
+                <Submit
+                  disabled={isSubmitting}
+                  bg="primary"
+                  ml={2}
+                  scale
+                  value="Save"
+                />
               </form>
             )}
           />

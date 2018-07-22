@@ -1,6 +1,6 @@
-import { Button } from '@hackclub/design-system'
+import { LargeButton } from '@hackclub/design-system'
 
-const Submit = Button.withComponent('input').extend.attrs({
+const Submit = LargeButton.withComponent('input').extend.attrs({
   type: 'submit'
 })``
 
