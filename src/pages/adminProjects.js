@@ -22,7 +22,7 @@ const FlexHeading = Flex.withComponent(Heading.h2).extend`
 `
 
 const Project = ({ data, onDelete, onSetTable }) => (
-  <Flex align="center">
+  <Flex align="center" mb={3}>
     <Image
       src={data.image}
       bg="smoke"

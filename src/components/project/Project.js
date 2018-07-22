@@ -6,7 +6,8 @@ import {
   Flex,
   Image,
   Icon,
-  Text
+  Text,
+  Link
 } from '@hackclub/design-system'
 
 const Base = Card.extend`
@@ -44,32 +45,39 @@ const Project = ({
   isUpvoted,
   ...props
 }) => (
-  <Base boxShadowSize="sm" bg="white">
-    <Image src={image} width={1} alt={name} />
-    <Flex p={3}>
-      <Box>
-        <Text fontSize={3} bold>
-          {name}
-        </Text>
-        <Text fontSize={2} color="slate">
-          {tagline}
-        </Text>
-      </Box>
-      <ProjectButton
-        bg={isUpvoted ? 'accent' : 'smoke'}
-        color={isUpvoted ? 'white' : 'slate'}
-        ml="auto"
-        onClick={() => {
-          upvoteProject(id)
-        }}
-      >
-        <Icon size={20} name="arrow_upward" />
-        {!upvotesCount === undefined && (
-          <Text.span ml={1} f={2} children={upvotesCount} />
-        )}
-      </ProjectButton>
-    </Flex>
-  </Base>
+  <Link href={link} target="_blank">
+    <Base boxShadowSize="sm" bg="white">
+      <Image
+        src={image || 'https://app.hackchicago.io/no_image.png'}
+        width={1}
+        alt={name}
+      />
+      <Flex p={3}>
+        <Box>
+          <Text fontSize={3} color="primary" bold>
+            {name}
+          </Text>
+          <Text fontSize={2} color="slate">
+            {tagline}
+          </Text>
+        </Box>
+        <ProjectButton
+          bg={isUpvoted ? 'accent' : 'smoke'}
+          color={isUpvoted ? 'white' : 'slate'}
+          ml="auto"
+          onClick={e => {
+            e.preventDefault()
+            upvoteProject(id)
+          }}
+        >
+          <Icon size={20} name="arrow_upward" />
+          {!upvotesCount === undefined && (
+            <Text.span ml={1} f={2} children={upvotesCount} />
+          )}
+        </ProjectButton>
+      </Flex>
+    </Base>
+  </Link>
 )
 
 export default Project
