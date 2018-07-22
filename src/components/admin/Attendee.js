@@ -72,7 +72,7 @@ const Attendee = ({
     </Buttons>
     <Box ml={2} align="left">
       <Text fontSize={3} bold>
-        <Link href={`/attendee/${id}`}>{`${fname} ${lname}`}</Link>
+        <Link href={`/attendees/${id}`}>{`${fname} ${lname}`}</Link>
       </Text>
       <Text my={[1, 2]} fontSize={1} color="slate">
         {grade}th Grader at {school} in {city}, {state}
