@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Box,
   Button,
+  Badge,
   Card,
   Flex,
   Image,
@@ -28,6 +29,7 @@ const ProjectButton = Button.button.extend`
   align-items: center;
   justify-content: center;
   width: 72px;
+  flex: 0;
   box-shadow: none !important;
 `
 
@@ -40,6 +42,7 @@ const Project = ({
   link,
   tagline,
   timestamp,
+  tableId,
   upvotesCount,
   upvoteProject,
   isUpvoted,
@@ -54,9 +57,12 @@ const Project = ({
       />
       <Flex p={3}>
         <Box>
-          <Text fontSize={3} color="primary" bold>
-            {name}
-          </Text>
+          <Flex align="center">
+            <Text fontSize={3} color="primary" align="left" bold>
+              {name}
+            </Text>
+            <Badge bg="smoke" color="slate" ml={2} children={tableId || '—'} />
+          </Flex>
           <Text fontSize={2} color="slate">
             {tagline}
           </Text>

@@ -141,6 +141,7 @@ class Projects extends Component {
                   description={project.description}
                   submitter={project.submitter}
                   timestamp={project.timestamp}
+                  tableId={project.tableId}
                   upvotesCount={project.upvotes}
                   upvoteProject={this.upvoteProject}
                   isUpvoted={upvotes.includes(project.id) ? true : false}
