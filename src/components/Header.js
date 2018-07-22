@@ -39,13 +39,13 @@ const ProjectsHeader = ({
             Add Project
           </Button>
         ) : (
-          <Button onClick={editProject} bg="info" mr={2}>
+          <Button onClick={editProject} bg="primary" mr={2}>
             Edit My Project
           </Button>
         )}
       </Fragment>
     ) : (
-      <Button onClick={showProjects} bg="accent" mr={2}>
+      <Button onClick={showProjects} bg="primary" mr={2}>
         View Projects
       </Button>
     )}
