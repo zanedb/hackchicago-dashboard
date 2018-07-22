@@ -112,7 +112,7 @@ class Projects extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Grid align="left">
+          <Grid align="left" pb={4}>
             {projects.length < 1 ? (
               <Text f={3} color="muted" py={4} align="center" bold>
                 No projects yet!
@@ -122,6 +122,7 @@ class Projects extends Component {
                 <Project
                   key={project.id}
                   id={project.id}
+                  image={project.image}
                   name={project.name}
                   link={project.link}
                   tagline={project.tagline}

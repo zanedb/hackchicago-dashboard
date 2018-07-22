@@ -32,6 +32,7 @@ const ProjectButton = Button.button.extend`
 
 const Project = ({
   id,
+  image,
   name,
   description,
   submitter,
@@ -43,8 +44,8 @@ const Project = ({
   isUpvoted,
   ...props
 }) => (
-  <Base boxShadowSize="sm">
-    <Image src="https://placehold.it/512x256" width={1} alt={name} />
+  <Base boxShadowSize="sm" bg="white">
+    <Image src={image} width={1} alt={name} />
     <Flex p={3}>
       <Box>
         <Text fontSize={3} bold>
@@ -63,11 +64,9 @@ const Project = ({
         }}
       >
         <Icon size={20} name="arrow_upward" />
-        <Text.span
-          ml={1}
-          f={2}
-          children={upvotesCount === undefined ? '0' : upvotesCount}
-        />
+        {!upvotesCount === undefined && (
+          <Text.span ml={1} f={2} children={upvotesCount} />
+        )}
       </ProjectButton>
     </Flex>
   </Base>

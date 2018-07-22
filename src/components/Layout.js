@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Box } from '@hackclub/design-system'
+import { Container, cx } from '@hackclub/design-system'
 import { injectGlobal } from 'styled-components'
 
 import Footer from './Footer'
@@ -10,14 +10,20 @@ injectGlobal`
     display: flex;
     flex-direction: column;
     width: 100%;
+    background-image: linear-gradient(
+      ${cx('white')},
+      ${cx('snow')}
+    );
   }
 `
 
+const Base = Container.withComponent('main').extend`min-height: 100vh;`
+
 const Layout = ({ children }) => (
   <Fragment>
-    <Box.main align="center" px={3} style={{ minHeight: '100vh' }}>
+    <Base maxWidth={48} color="black" align="center" px={3}>
       {children}
-    </Box.main>
+    </Base>
     <Footer />
   </Fragment>
 )

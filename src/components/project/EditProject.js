@@ -50,10 +50,7 @@ class EditProject extends Component {
                   method: 'put',
                   url: `https://api.hackchicago.io/v1/projects/${project.id}`,
                   data: {
-                    name: values.name,
-                    link: values.link,
-                    tagline: values.tagline,
-                    description: values.description
+                    link: values.link
                   },
                   withCredentials: true
                 })
@@ -85,7 +82,13 @@ class EditProject extends Component {
                   label="Devpost URL"
                   mb={4}
                 />
-                <Button onClick={props.onEnd} bg="muted" inverted scale mr={2}>
+                <Button
+                  onClick={this.props.onEnd}
+                  bg="muted"
+                  inverted
+                  scale
+                  mr={2}
+                >
                   Cancel
                 </Button>
                 <Submit
