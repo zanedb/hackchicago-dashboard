@@ -10,6 +10,7 @@ const Grid = Container.extend`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: ${({ theme }) => theme.space[3]}px;
+  align-items: center;
 `
 
 function SeededRandom(seed) {

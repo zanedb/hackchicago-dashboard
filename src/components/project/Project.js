@@ -54,6 +54,7 @@ const Project = ({
         src={image || 'https://app.hackchicago.io/no_image.png'}
         width={1}
         alt={name}
+        style={{ maxHeight: 256, objectFit: 'contain' }}
       />
       <Flex p={3}>
         <Box>
