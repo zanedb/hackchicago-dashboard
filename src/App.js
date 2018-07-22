@@ -1,6 +1,6 @@
-import { ThemeProvider, theme } from '@hackclub/design-system'
 import React from 'react'
 import palx from 'palx'
+import { ThemeProvider, theme } from '@hackclub/design-system'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Layout from './components/Layout'
@@ -12,7 +12,7 @@ import Attendee from './pages/attendee'
 
 const config = theme
 
-const blue = '#5299d3'
+const blue = '#0069ff'
 const palette = palx(blue)
 
 const grays = {
@@ -45,7 +45,7 @@ config.colors = colors
 
 const App = () => (
   <BrowserRouter>
-    <ThemeProvider theme={config} webfonts>
+    <ThemeProvider>
       <Layout>
         <Switch>
           <Route path="/" component={Index} exact />
