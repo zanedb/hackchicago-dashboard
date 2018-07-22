@@ -109,11 +109,9 @@ class AdminProjects extends Component {
 
   deleteProject = id => {
     axios
-      .delete(
-        `https://api.hackchicago.io/v1/projects/${id}`,
-        {},
-        { withCredentials: true }
-      )
+      .delete(`https://api.hackchicago.io/v1/projects/${id}`, {
+        withCredentials: true
+      })
       .then(res => {
         this.loadProjects()
       })
@@ -175,6 +173,11 @@ class AdminProjects extends Component {
                 key={project.id}
               />
             ))}
+            {projects.length === 0 && (
+              <Text color="muted" f={4} bold align="center">
+                No projects yet
+              </Text>
+            )}
           </Container>
         )
       case 'error':
