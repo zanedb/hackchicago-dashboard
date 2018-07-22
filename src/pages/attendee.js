@@ -42,7 +42,7 @@ const Switch = Box.extend`
   }
 `
 
-class Project extends Component {
+class Attendee extends Component {
   state = {
     status: 'loading',
     view: 'show',
@@ -265,4 +265,4 @@ class Project extends Component {
   }
 }
 
-export default Project
+export default Attendee
