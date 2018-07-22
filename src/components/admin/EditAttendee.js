@@ -126,7 +126,7 @@ class EditAttendee extends Component {
                   label="Last Name"
                 />
                 <Field
-                  type="text"
+                  type="email"
                   name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -151,15 +151,6 @@ class EditAttendee extends Component {
                   value={values.gender}
                   error={errors.gender}
                   label="Gender"
-                />
-                <Field
-                  type="text"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  error={errors.email}
-                  label="Email"
                 />
                 <Field
                   type="text"

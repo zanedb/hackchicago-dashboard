@@ -10,6 +10,7 @@ const Grid = Container.extend`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: ${({ theme }) => theme.space[3]}px;
+  align-items: center;
 `
 
 function SeededRandom(seed) {
@@ -141,6 +142,7 @@ class Projects extends Component {
                   description={project.description}
                   submitter={project.submitter}
                   timestamp={project.timestamp}
+                  tableId={project.tableId}
                   upvotesCount={project.upvotes}
                   upvoteProject={this.upvoteProject}
                   isUpvoted={upvotes.includes(project.id) ? true : false}
