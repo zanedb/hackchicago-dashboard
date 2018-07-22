@@ -168,7 +168,10 @@ class AdminProjects extends Component {
             {projects.map(project => (
               <Project
                 data={project}
-                onDelete={this.deleteProject}
+                onDelete={() => {
+                  if (window.confirm(`Are you SURE you want to delete?`))
+                    this.deleteProject
+                }}
                 onSetTable={this.setProjectTable}
                 key={project.id}
               />
