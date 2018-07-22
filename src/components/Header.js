@@ -24,8 +24,8 @@ const ProjectsHeader = ({
   doLogout,
   ...props
 }) => (
-  <Base mt={4} mb={3} width={1}>
-    <Heading.h1 fontSize={6} align="left">
+  <Base mt={4} mb={3} width={1} color="black">
+    <Heading.h1 fontSize={6} align="left" style={{ fontWeight: '800' }}>
       <Link to="/" onClick={showProjects}>
         {whatIsShowing.toLowerCase().includes('project') && 'Projects'}
         {whatIsShowing.toLowerCase().includes('admin') && 'Admin'}
@@ -35,11 +35,11 @@ const ProjectsHeader = ({
     {whatIsShowing === 'projects' ? (
       <Fragment>
         {!hasSubmitted ? (
-          <Button onClick={addProject} bg="accent" mr={2} scale>
+          <Button onClick={addProject} bg="success" mr={2} scale>
             Add Project
           </Button>
         ) : (
-          <Button onClick={editProject} bg="accent" mr={2}>
+          <Button onClick={editProject} bg="info" mr={2}>
             Edit My Project
           </Button>
         )}
