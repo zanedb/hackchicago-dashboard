@@ -55,6 +55,7 @@ const AddProject = props => (
             value={values.link}
             error={errors.link}
             label="Devpost URL"
+            autoFocus
             mb={4}
           />
           <Button onClick={props.onEnd} bg="muted" inverted scale mr={2}>
