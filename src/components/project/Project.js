@@ -51,9 +51,7 @@ const Project = ({
   <Link href={link} target="_blank">
     <Base boxShadowSize="sm" bg="white">
       <Image
-        src={
-          image === 'https:' ? 'https://app.hackchicago.io/no_image.png' : image
-        }
+        src={image === 'https:' ? '/no_image.png' : image}
         width={1}
         alt={name}
         style={{ maxHeight: 256, objectFit: 'contain' }}
