@@ -106,7 +106,14 @@ class Index extends Component {
               showProjects={this.showProjects}
               doLogout={this.doLogout}
             />
-            {view === 'projects' && <Projects />}
+            {view === 'projects' && (
+              <Fragment>
+                <Text f={1} align="center" py={3} color="muted" caps>
+                  Sorted in no particular order
+                </Text>
+                <Projects />
+              </Fragment>
+            )}
             {view === 'addProject' && <AddProject onEnd={this.showProjects} />}
             {view === 'editProject' && (
               <EditProject onEnd={this.showProjects} />

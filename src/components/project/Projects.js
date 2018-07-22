@@ -12,6 +12,14 @@ const Grid = Container.extend`
   grid-gap: ${({ theme }) => theme.space[3]}px;
 `
 
+function SeededRandom(seed) {
+  this.seed = seed
+  this.get = () => {
+    const x = Math.sin(seed++) * 10000
+    return x - Math.floor(x)
+  }
+}
+
 class Projects extends Component {
   state = {
     projects: [],
@@ -107,6 +115,10 @@ class Projects extends Component {
 
   render() {
     const { projects, upvotes, status, message } = this.state
+    const randGenerator = new SeededRandom(this.seed)
+    const sortedProjects = projects
+      .sort((a, b) => a.id - b.id)
+      .sort((a, b) => randGenerator.get() - 0.5)
     switch (status) {
       case 'loading':
         return <LoadingBar />
@@ -118,7 +130,7 @@ class Projects extends Component {
                 No projects yet!
               </Text>
             ) : (
-              projects.map(project => (
+              sortedProjects.map(project => (
                 <Project
                   key={project.id}
                   id={project.id}
