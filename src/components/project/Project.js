@@ -1,6 +1,13 @@
-import { Button, Card, Flex, Image, Icon, Text } from '@hackclub/design-system'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  Image,
+  Icon,
+  Text
+} from '@hackclub/design-system'
 
 const Base = Card.extend`
   box-shadow: ${({ theme }) => theme.boxShadows[1]};
@@ -37,18 +44,16 @@ const Project = ({
   ...props
 }) => (
   <Base boxShadowSize="sm">
-    <Link to={`/project/${id}`}>
-      <Image src="https://placehold.it/512x256" width={1} alt={name} />
-    </Link>
+    <Image src="https://placehold.it/512x256" width={1} alt={name} />
     <Flex p={3}>
-      <Link to={`/project/${id}`}>
+      <Box>
         <Text fontSize={3} bold>
           {name}
         </Text>
         <Text fontSize={2} color="slate">
           {tagline}
         </Text>
-      </Link>
+      </Box>
       <ProjectButton
         bg={isUpvoted ? 'accent' : 'smoke'}
         color={isUpvoted ? 'white' : 'slate'}
