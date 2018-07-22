@@ -1,3 +1,4 @@
 /* /index.html 200
 /project/:id /projects/:id 301
 /attendee/:id /attendees/:id 301
+/projects / 301

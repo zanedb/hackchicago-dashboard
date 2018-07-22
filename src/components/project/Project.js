@@ -64,7 +64,7 @@ const Project = ({
         }}
       >
         <Icon size={20} name="arrow_upward" />
-        {!upvotesCount === undefined && (
+        {upvotesCount !== undefined && (
           <Text.span ml={1} f={2} children={upvotesCount} />
         )}
       </ProjectButton>

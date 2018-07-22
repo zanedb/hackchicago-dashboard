@@ -50,7 +50,7 @@ const ProjectsHeader = ({
       </Button>
     )}
     {role === 'admin' && (
-      <Link to="/admin">
+      <Link to="/admin/projects">
         <Button bg="important" mr={2}>
           Admin
         </Button>
