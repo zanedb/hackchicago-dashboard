@@ -50,8 +50,8 @@ const App = () => (
         <Switch>
           <Route path="/" component={Index} exact />
           <Route path="/admin" component={Admin} exact />
-          <Route path="/project/:project_id" component={Project} exact />
-          <Route path="/attendee/:attendee_id" component={Attendee} exact />
+          <Route path="/projects/:project_id" component={Project} exact />
+          <Route path="/attendees/:attendee_id" component={Attendee} exact />
           <Route component={NotFound} />
         </Switch>
       </Layout>
